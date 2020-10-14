@@ -1,4 +1,4 @@
-package hu.csapatnev.webshop.jpa.dao.model;
+package hu.csapatnev.webshop.jpa.model;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;

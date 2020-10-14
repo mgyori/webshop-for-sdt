@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import hu.csapatnev.webshop.jpa.dao.model.ShopItem;
+import hu.csapatnev.webshop.jpa.model.ShopItem;
 import hu.csapatnev.webshop.jpa.service.ShopItemService;
 
 @Controller

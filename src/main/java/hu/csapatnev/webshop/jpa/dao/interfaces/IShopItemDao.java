@@ -1,9 +1,9 @@
-package hu.csapatnev.webshop.jpa.dao;
+package hu.csapatnev.webshop.jpa.dao.interfaces;
 
 import java.util.List;
 import java.util.Optional;
 
-import hu.csapatnev.webshop.jpa.dao.model.ShopItem;
+import hu.csapatnev.webshop.jpa.model.ShopItem;
 
 public interface IShopItemDao {
 	ShopItem findOne(long id);

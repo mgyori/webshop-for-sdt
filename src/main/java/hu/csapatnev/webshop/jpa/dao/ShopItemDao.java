@@ -8,7 +8,8 @@ import javax.persistence.NoResultException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import hu.csapatnev.webshop.jpa.dao.model.ShopItem;
+import hu.csapatnev.webshop.jpa.dao.interfaces.IShopItemDao;
+import hu.csapatnev.webshop.jpa.model.ShopItem;
 
 @Repository
 public class ShopItemDao extends AbstractJpaDao<ShopItem> implements IShopItemDao  {

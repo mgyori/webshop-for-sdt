@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import hu.csapatnev.webshop.jpa.dao.IShopItemDao;
-import hu.csapatnev.webshop.jpa.dao.model.ShopItem;
+import hu.csapatnev.webshop.jpa.dao.interfaces.IShopItemDao;
+import hu.csapatnev.webshop.jpa.model.ShopItem;
 
 @Service
 @Transactional
