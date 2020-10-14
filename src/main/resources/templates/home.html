@@ -10,9 +10,11 @@
     <body>
         <p th:text="'Hello, ' + ${name} + '!'" />
 
-        <tr th:each="item: ${shopItems}">
-            <td th:text="${item.id}" />
-            <td th:text="${item.name}" />
-        </tr>
+        <table>
+            <tr th:each="item: ${shopItems}">
+                <td th:text="${item.id}" />
+                <td th:text="${item.name}" />
+            </tr>
+        </table>
     </body>
 </html>

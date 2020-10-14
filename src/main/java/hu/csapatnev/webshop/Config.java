@@ -1,5 +1,6 @@
 package hu.csapatnev.webshop;
 
+import java.io.InputStream;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -18,6 +19,8 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @EnableWebMvc
 @Configuration
 public class Config implements WebMvcConfigurer {
+	private Properties properties;
+	
     @Bean
     public ITemplateResolver templateResolver() {
         ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
@@ -31,11 +34,12 @@ public class Config implements WebMvcConfigurer {
     
     @Bean
     public DataSource dataSource() {
+    	Properties prop = getProperties();
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUsername("webshop");
-        dataSource.setPassword("KQzrmW4KzfR9NNaL");
-        dataSource.setUrl("jdbc:mysql://server.markgyori.eu:3306/webshop?createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+        dataSource.setUsername(prop.getProperty("db.user"));
+        dataSource.setPassword(prop.getProperty("db.pass"));
+        dataSource.setUrl("jdbc:mysql://" + prop.getProperty("db.host") + ":" + prop.getProperty("db.port") + "/" + prop.getProperty("db.base") + "?createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         return dataSource;
     }
     
@@ -43,13 +47,27 @@ public class Config implements WebMvcConfigurer {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "hu.csapatnev.webshop.jpa.dao.model" });
+        em.setPackagesToScan(new String[] { "hu.csapatnev.webshop.jpa.model" });
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(additionalProperties());
 
         return em;
+    }
+    
+    public Properties getProperties() {
+    	if (this.properties == null) {
+	    	this.properties = new Properties();
+		    InputStream inputStream = App.class.getClassLoader().getResourceAsStream("application.properties");
+		    try {
+		    	this.properties.load(inputStream);
+		    } catch(Exception e) {
+		    	System.out.println(e);
+		    }
+    	}
+	    
+	    return this.properties;
     }
     
     final Properties additionalProperties() {
