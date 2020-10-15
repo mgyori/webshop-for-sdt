@@ -25,7 +25,7 @@ public class HomeController {
 		
 		List<ShopItem> topItems = shopItems.getBestOf(12);
 		model.addAttribute("shopItems", topItems);
-
+		
 		return "home";
 	}
 }

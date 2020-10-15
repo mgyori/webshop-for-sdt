@@ -15,7 +15,7 @@ public class ShopItemService {
 
 	@Autowired
     private IShopItemDao dao;
-
+	
     public ShopItemService() {
         super();
     }
@@ -37,5 +37,4 @@ public class ShopItemService {
     public List<ShopItem> getBestOf(int num) {
     	return dao.getBestOf(num).get();
     }
-	
 }
