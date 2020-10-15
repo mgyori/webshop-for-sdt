@@ -69,6 +69,11 @@ public class ShopItem implements Serializable {
 	 */
 	private ZonedDateTime added;
 	
+	/**
+	 * Tárgy képe.
+	 */
+	private String image;
+	
 	@PrePersist
     protected void onPersist() {
 		added = ZonedDateTime.now();
