@@ -8,7 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+
+import hu.csapatnev.webshop.jpa.dao.interfaces.IShopCategoryDao;
+
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import lombok.AllArgsConstructor;
@@ -69,4 +73,11 @@ public class ShopItem implements Serializable {
     protected void onPersist() {
 		added = ZonedDateTime.now();
     }
+	
+	@Autowired
+	private IShopCategoryDao shopCategoryDao;
+	
+	public ShopCategory getShopCategory() {
+		return shopCategoryDao.findOne(this.category);
+	}
 }

@@ -7,35 +7,31 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import hu.csapatnev.webshop.jpa.dao.interfaces.IShopCategoryDao;
-import hu.csapatnev.webshop.jpa.dao.interfaces.IShopItemDao;
-import hu.csapatnev.webshop.jpa.model.ShopItem;
+import hu.csapatnev.webshop.jpa.model.ShopCategory;
 
 @Service
 @Transactional
-public class ShopItemService {
+public class ShopCategoryService {
 
 	@Autowired
-    private IShopItemDao dao;
-	
-    public ShopItemService() {
+    private IShopCategoryDao dao;
+
+    public ShopCategoryService() {
         super();
     }
 
     // API
 
-    public void create(final ShopItem entity) {
+    public void create(final ShopCategory entity) {
         dao.create(entity);
     }
 
-    public ShopItem findOne(final long id) {
+    public ShopCategory findOne(final long id) {
         return dao.findOne(id);
     }
 
-    public List<ShopItem> findAll() {
+    public List<ShopCategory> findAll() {
         return dao.findAll();
     }
-    
-    public List<ShopItem> getBestOf(int num) {
-    	return dao.getBestOf(num).get();
-    }
+	
 }
