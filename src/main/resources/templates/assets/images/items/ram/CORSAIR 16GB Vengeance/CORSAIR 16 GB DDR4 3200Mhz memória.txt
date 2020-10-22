@@ -1,0 +1,12 @@
+CORSAIR 16 GB DDR4 3200Mhz memória (Kiszerelés: 2 db modul)
+
+
+zín	Fekete
+Memória mérete 	16 GB
+Memória típusa 	DDR4
+Frekvencia	3200 MHz
+Késleltetés CL	16
+Hűtőborda	Igen
+Darabszám	2 db
+Gyártóspecifikus 	Nem
+iPon Gamer 	Nem
