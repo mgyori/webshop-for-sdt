@@ -2295,15 +2295,14 @@ span.skill {
 .pagination>li>span:focus,
 .pagination>li>span:hover {
 	z-index: 2;
-	color: #222;
-	background-color: #ddd;
+	color: #fff;
+	background-color: #039ee3;
 	border-color: #ddd;
 }
 
 .pagination {
 	margin: 0;
 }
-
 
 /*------------------------------------------------------------------
 		8. SLIDER
