@@ -25,8 +25,9 @@
 									<span class="new-price"><span th:text="${itemPrice}"></span> Ft</span>
 								</div>
 								<div class="detail-contant">
-									<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. 
-										Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.<br>
+									<p>
+										<span th:text="${itemShortDesc}"></span>
+										<br>
 										<span class="stock"><span th:text="${itemStock}"></span> darab raktáron</span>
 									</p>
 									<form class="cart" method="post" action="it_cart.html">
@@ -58,14 +59,7 @@
 										<div class="tab-content">
 											<div id="description" class="tab-pane active">
 												<div class="product_desc">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac elementum elit. Morbi eu arcu ipsum. Aliquam lobortis accumsan quam ac convallis. 
-													Fusce elit mauris, aliquet at odio vel, convallis vehicula nisi. Morbi vitae porttitor dolor. Integer eget metus sem. Nam venenatis mauris vel leo pulvinar, 
-													id rutrum dui varius. Nunc ac varius quam, non convallis magna. Donec suscipit commodo dapibus.<br>
-													<br>
-													Vestibulum et ullamcorper ligula. Morbi bibendum tempor rutrum. 
-													Pelle tesque auctor purus id molestie ornare.Donec eu lobortis risus. Pellentesque sed aliquam lorem. Praesent pulvinar lorem vel mauris ultrices posuere. 
-													Phasellus elit ex, gravida a semper ut, venenatis vitae diam. Nullam eget leo massa. Aenean eu consequat arcu, vitae scelerisque quam. Suspendisse risus turpis, 
-													pharetra a finibus vitae, lobortis et mi.</p>
+												<p th:text="${itemDesc}"></p>
 												</div>
 											</div>
 										</div>
@@ -83,23 +77,20 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
-								<div class="product_list">
-									<div class="product_img">
-										<img class="img-responsive" src="/assets/images/1.jpg" alt="">
-									</div>
-									<div class="product_detail_btm">
-										<div class="center">
-											<h4><a href="it_shop_detail.html">Norton Internet Security</a></h4>
-										</div>
-										<div class="starratin">
-											<div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-										</div>
-										<div class="product_price">
-											<p><span class="old_price">$15.00</span> – <span class="new_price">$25.00</span></p>
+							<div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all" th:each="item: ${recommended}">
+								<a th:href="@{'/details/' + ${item.link}}">
+									<div class="product_list">
+										<div class="product_img"> <img class="img-responsive" th:src="@{'/assets/images/' + ${item.image} + '.jpg'}" alt=""> </div>
+										<div class="product_detail_btm">
+											<div class="center">
+												<h4 th:text="${item.name}"></h4>
+											</div>
+											<div class="product_price">
+												<p><span class="new_price"><span th:text="${item.price}"></span> Ft</span></p>
+											</div>
 										</div>
 									</div>
-								</div>
+								</a>
 							</div>
 						</div>
 					</div>

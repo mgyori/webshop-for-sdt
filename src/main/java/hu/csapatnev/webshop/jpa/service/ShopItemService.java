@@ -1,5 +1,6 @@
 package hu.csapatnev.webshop.jpa.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,5 +63,12 @@ public class ShopItemService {
     	if (o.isPresent())
     		return o.get();
     	return null;
+    }
+    
+    public List<ShopItem> getByCategory(int category, int max) {
+    	Optional<List<ShopItem>> o = dao.getByCategory(category, max);
+    	if (o.isPresent())
+    		return o.get();
+    	return new ArrayList<>();
     }
 }

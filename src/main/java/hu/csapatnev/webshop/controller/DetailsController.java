@@ -32,6 +32,11 @@ public class DetailsController {
 			model.addAttribute("itemImage", item.getImage());
 			model.addAttribute("itemStock", item.getInstock());
 			model.addAttribute("itemPrice", item.getPrice());
+			model.addAttribute("itemShortDesc", item.getShortDescription());
+			model.addAttribute("itemDesc", item.getDescription());
+			
+			model.addAttribute("recommended", shopItems.getByCategory(item.getCategory(), 3));
+			
 			return "details";
 		}
 		
