@@ -1,21 +1,434 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-    xmlns:th="http://www.thymeleaf.org" 
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-    <head>
-        <title>Item</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    </head>
-    <body>
-        <p th:text="'The page: ' + ${page} + '!'" />
-        <p th:text="'The sort: ' + ${sort} + '!'" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<title>Összes termék</title>
+<!-- site icons -->
+<link rel="icon" href="assets/images/icon.svg"/>
+<!-- bootstrap css -->
+<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+<!-- Site css -->
+<link rel="stylesheet" href="assets/css/style.css" />
+<!-- responsive css -->
+<link rel="stylesheet" href="assets/css/responsive.css" />
+<!-- colors css -->
+<link rel="stylesheet" href="assets/css/colors1.css" />
+<!-- wow Animation css -->
+<link rel="stylesheet" href="assets/css/animate.css" />
 
-        <table>
-            <tr th:each="item: ${items}">
-                <td th:text="${item.id}" />
-                <td th:text="${item.name}" />
-            </tr>
-        </table>
-    </body>
+<link rel="stylesheet" href="assets/css/sidebar.css" />
+
+</head>
+<body id="default_theme" class="it_shop_list">
+<!-- loader -->
+<div class="bg_load"> <img class="loader_animation" src="assets/images/icon.svg" alt="#" /> </div>
+<!-- end loader -->
+<!-- header -->
+<header id="default_header" class="header_style_1">
+  <!-- header bottom -->
+  <div class="header_bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+          <!-- logo start -->
+          <div class="logo"> <a href="home.html"><img src="assets/images/icon.svg" alt="logo" /></a> </div>
+          <!-- logo end -->
+        </div>
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+          <!-- menu start -->
+          <div class="menu_side">
+            <div id="navbar_menu">
+              <ul class="first-ul">
+                <li> <a href="home.html">Home</a> </li>
+                <li> <a class="active" href="#">Shop</a> </li>
+              </ul>
+            </div>
+          </div>
+          <!-- menu end -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- header bottom end -->
+</header>
+<!-- end header -->
+<!-- section -->
+<div class="section padding_layout_1 product_list_main">
+  <div class="container-fluid">
+    <div class="row main">
+      <div  class="sidenav col-md-2">
+        <div class="side_bar">
+          <div class="side_bar_blog">
+            <h4>Keresés</h4>
+            <div class="side_bar_search">
+              <div class="input-group stylish-input-group">
+                <input class="form-control" placeholder="Keresés" type="text">
+                <span class="input-group-addon">
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </span> </div>
+            </div>
+          </div>
+
+          <div class="side_bar_blog">
+            <h4>Kategóriák</h4>
+            <div class="categary">
+              <ul>
+                <a href="#"><li><i class="fa fa-angle-right"></i> Gépházak</li></a>
+                <a href="#"><li><i class="fa fa-angle-right"></i> Alaplapok</li></a>
+                <a href="#"><li><i class="fa fa-angle-right"></i> Processzorok</li></a>
+                <a href="#"><li><i class="fa fa-angle-right"></i> Videókártyák</li></a>
+                <a href="#"><li><i class="fa fa-angle-right"></i> HDD-k, SSD-k</li></a>
+                <a href="#"><li><i class="fa fa-angle-right"></i> RAM-ok</li></a>
+                <a href="#"><li><i class="fa fa-angle-right"></i> Tápegységek</li></a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-10">
+        <div class="row">
+          
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/items/alaplapok/ASUS ROG STRIX B450-F GAMING/511879743.asus-rog-strix-b450-f-gaming.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>ASUS ROG STRIX B450-F GAMING</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">Túl sok Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
+            <a href="it_shop_detail.html">
+            <div class="product_list">
+              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
+              <div class="product_detail_btm">
+                <div class="center">
+                  <h4>Norton Internet Security</h4>
+                </div>
+                <div class="product_price">
+                  <p><span class="new_price">50 000 Ft</span></p>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <!-- pagination start -->
+            <div class="center">
+              <ul class="pagination">
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+              </ul>
+            </div>
+          <!-- pagination end -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end section -->
+
+<!-- footer -->
+<footer class="footer_style_2">
+  <div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3808.9297321932386!2d21.639769267059105!3d47.5420941145914!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8426ebc782bcb06b!2sDebreceni%20Egyetem%20Informatikai%20Kar!5e0!3m2!1shu!2shu!4v1603377804546!5m2!1shu!2shu" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </div>
+  <div class="cprt">
+    <p>Webshop © Copyrights 2019 Design by html.design</p>
+  </div>
+</footer>
+<!-- end footer -->
+<!-- js section -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<!-- menu js -->
+<script src="assets/js/menumaker.js"></script>
+<!-- wow animation -->
+<script src="assets/js/wow.js"></script>
+<!-- custom js -->
+<script src="assets/js/custom.js"></script>
+</body>
 </html>
