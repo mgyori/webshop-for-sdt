@@ -27,4 +27,12 @@ public class ShopItemDao extends AbstractJpaDao<ShopItem> implements IShopItemDa
 			return Optional.empty();
 		}
 	}
+	
+	public Optional<ShopItem> findByLink(String link) {
+		try {
+			return Optional.of(entityManager.createQuery("SELECT s FROM ShopItem s WHERE s.link = :l", ShopItem.class).setParameter("l", link).getSingleResult());
+		} catch (NoResultException e) {
+			return Optional.empty();
+		}
+	}
 }

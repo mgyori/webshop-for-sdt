@@ -1,6 +1,7 @@
 package hu.csapatnev.webshop.jpa.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -54,5 +55,12 @@ public class ShopItemService {
         	return items.getContent();
         else
         	return null;
+    }
+    
+    public ShopItem findByLink(String link) {
+    	Optional<ShopItem> o = dao.findByLink(link);
+    	if (o.isPresent())
+    		return o.get();
+    	return null;
     }
 }

@@ -1,346 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<!-- basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- mobile metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<!-- site metas -->
-<title>Webshop</title>
-<!-- site icons -->
-<link rel="icon" href="assets/images/icon.svg"/>
-<!-- bootstrap css -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-<!-- Site css -->
-<link rel="stylesheet" href="assets/css/style.css" />
-<!-- responsive css -->
-<link rel="stylesheet" href="assets/css/responsive.css" />
-<!-- colors css -->
-<link rel="stylesheet" href="assets/css/colors1.css" />
-<!-- wow Animation css -->
-<link rel="stylesheet" href="assets/css/animate.css" />
+	<html lang="en">
+	<head th:insert="home :: head"></head>
+	<body id="default_theme" class="it_shop_detail">
+		<div class="bg_load" th:insert="home :: loading"></div>
+		<header id="default_header" class="header_style_1" th:insert="home :: menu"></header>
 
-<!--Slick css-->
-<link rel="stylesheet" type="text/css" href="assets/css/slick.css"/>
-<link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css"/>
-
-</head>
-<body id="default_theme" class="it_shop_detail">
-<!-- loader -->
-<div class="bg_load"> <img class="loader_animation" src="assets/images/icon.svg" alt="#" /> </div>
-<!-- end loader -->
-<!-- header -->
-<header id="default_header" class="header_style_1">
-  <!-- header bottom -->
-  <div class="header_bottom">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-          <!-- logo start -->
-          <div class="logo"> <a href="it_home.html"><img src="assets/images/icon.svg" alt="logo" /></a> </div>
-          <!-- logo end -->
-        </div>
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-          <!-- menu start -->
-          <div class="menu_side">
-            <div id="navbar_menu">
-              <ul class="first-ul">
-                <li> <a href="it_home.html">Home</a>
-                  <ul>
-                    <li><a href="it_home.html">It Home Page</a></li>
-                    <li><a href="it_home_dark.html">It Dark Home Page</a></li>
-                  </ul>
-                </li>
-                <li> <a class="active" href="it_shop.html">Shop</a>
-                  <ul>
-                    <li><a href="it_shop.html">Shop List</a></li>
-                    <li><a href="it_shop_detail.html">Shop Detail</a></li>
-                    <li><a href="it_cart.html">Shopping Cart</a></li>
-                    <li><a href="it_checkout.html">Checkout</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- menu end -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- header bottom end -->
-</header>
-<!-- end header -->
-<!-- section -->
-<div class="section padding_layout_1 product_detail">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="row">
-          <div class="col-xl-6 col-lg-12 col-md-12">
-            <div class="product_detail_feature_img hizoom hi2">
-              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""/> </div>
-            </div>
-          </div>
-          <div class="col-xl-6 col-lg-12 col-md-12 product_detail_side detail_style1">
-            <div class="product-heading">
-              <h2>Norton Internet Security</h2>
-            </div>
-            <div class="product-detail-side"> <span><del>$25.00</del></span><span class="new-price">$20.00</span> <span class="rating"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span> <span class="review">(5 customer review)</span> </div>
-            <div class="detail-contant">
-              <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. 
-                Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.<br>
-                <span class="stock">2 in stock</span> </p>
-              <form class="cart" method="post" action="it_cart.html">
-                <div class="quantity">
-                  <input step="1" min="1" max="5" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" type="number">
-                </div>
-                <button type="submit" class="btn sqaure_bt">Add to cart</button>
-              </form>
-            </div>
-            <div class="share-post"> <a href="#" class="share-text">Share</a>
-              <ul class="social_icons">
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="full">
-              <div class="tab_bar_section">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#description">Description</a> </li>
-                  <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#reviews">Reviews (2)</a> </li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                  <div id="description" class="tab-pane active">
-                    <div class="product_desc">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac elementum elit. Morbi eu arcu ipsum. Aliquam lobortis accumsan quam ac convallis. 
-                        Fusce elit mauris, aliquet at odio vel, convallis vehicula nisi. Morbi vitae porttitor dolor. Integer eget metus sem. Nam venenatis mauris vel leo pulvinar, 
-                        id rutrum dui varius. Nunc ac varius quam, non convallis magna. Donec suscipit commodo dapibus.<br>
-                        <br>
-                        Vestibulum et ullamcorper ligula. Morbi bibendum tempor rutrum. 
-                        Pelle tesque auctor purus id molestie ornare.Donec eu lobortis risus. Pellentesque sed aliquam lorem. Praesent pulvinar lorem vel mauris ultrices posuere. 
-                        Phasellus elit ex, gravida a semper ut, venenatis vitae diam. Nullam eget leo massa. Aenean eu consequat arcu, vitae scelerisque quam. Suspendisse risus turpis, 
-                        pharetra a finibus vitae, lobortis et mi.</p>
-                    </div>
-                  </div>
-                  <div id="reviews" class="tab-pane fade">
-                    <div class="product_review">
-                      <h3>Reviews (2)</h3>
-                      <div class="commant-text row">
-                        <div class="col-lg-2 col-md-2 col-sm-4">
-                          <div class="profile"> <img class="img-responsive" src="images/it_service/client1.png" alt="#"> </div>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8">
-                          <h5>David</h5>
-                          <p><span class="c_date">March 2, 2018</span> | <span><a rel="nofollow" class="comment-reply-link" href="#">Reply</a></span></p>
-                          <span class="rating"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span>
-                          <p class="msg">ThisThis book is a treatise on the theory of ethics, very popular during the Renaissance. 
-                            The first line of Lorem Ipsum, “Lorem ipsum dolor sit amet.. </p>
-                        </div>
-                      </div>
-                      <div class="commant-text row">
-                        <div class="col-lg-2 col-md-2 col-sm-4">
-                          <div class="profile"> <img class="img-responsive" src="images/it_service/client2.png" alt="#"> </div>
-                        </div>
-                        <div class="col-lg-10 col-md-10 col-sm-8">
-                          <h5>Jack</h5>
-                          <p><span class="c_date">March 2, 2018</span> | <span><a rel="nofollow" class="comment-reply-link" href="#">Reply</a></span></p>
-                          <span class="rating"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </span>
-                          <p class="msg">Nunc augue purus, posuere in accumsan sodales ac, euismod at est. Nunc faccumsan ermentum consectetur metus placerat mattis. Praesent mollis justo felis, accumsan faucibus mi maximus et. Nam hendrerit mauris id scelerisque placerat. Nam vitae imperdiet turpis</p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="full review_bt_section">
-                            <div class="float-right"> <a class="btn sqaure_bt" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Leave a Review</a> </div>
-                          </div>
-                          <div class="full">
-                            <div id="collapseExample" class="full collapse commant_box">
-                              <form accept-charset="UTF-8" action="index.html" method="post">
-                                <input id="ratings-hidden" name="rating" type="hidden">
-                                <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." required=""></textarea>
-                                <div class="full_bt center">
-                                  <button class="btn sqaure_bt" type="submit">Save</button>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="full">
-              <div class="main_heading text_align_left" style="margin-bottom: 35px;">
-                <h3>Related products</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
-            <div class="product_list">
-              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-              <div class="product_detail_btm">
-                <div class="center">
-                  <h4><a href="it_shop_detail.html">Norton Internet Security</a></h4>
-                </div>
-                <div class="starratin">
-                  <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                </div>
-                <div class="product_price">
-                  <p><span class="old_price">$15.00</span> – <span class="new_price">$25.00</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
-            <div class="product_list">
-              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-              <div class="product_detail_btm">
-                <div class="center">
-                  <h4><a href="it_shop_detail.html">Norton Internet Security</a></h4>
-                </div>
-                <div class="starratin">
-                  <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                </div>
-                <div class="product_price">
-                  <p><span class="old_price">$15.00</span> – <span class="new_price">$25.00</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
-            <div class="product_list">
-              <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-              <div class="product_detail_btm">
-                <div class="center">
-                  <h4><a href="it_shop_detail.html">Kaspersky Internet Security</a></h4>
-                </div>
-                <div class="starratin">
-                  <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                </div>
-                <div class="product_price">
-                  <p><span class="old_price">$24.99</span><span class="new_price"> $12.49</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end section -->
-<!-- footer -->
-<footer class="footer_style_2">
-  <div class="container-fuild">
-    <div class="row">
-      <div class="map_section">
-        <div id="map"></div>
-      </div>
-      <div class="footer_blog">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="main-heading left_text">
-              <h2>It Next Theme</h2>
-            </div>
-            <p>Tincidunt elit magnis nulla facilisis. Dolor sagittis maecenas. Sapien nunc amet ultrices, dolores sit ipsum velit purus aliquet, massa fringilla leo orci.</p>
-            <ul class="social_icons">
-              <li class="social-icon fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li class="social-icon tw"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li class="social-icon gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <div class="main-heading left_text">
-              <h2>Additional links</h2>
-            </div>
-            <ul class="footer-menu">
-              <li><a href="it_about.html"><i class="fa fa-angle-right"></i> About us</a></li>
-              <li><a href="it_term_condition.html"><i class="fa fa-angle-right"></i> Terms and conditions</a></li>
-              <li><a href="it_privacy_policy.html"><i class="fa fa-angle-right"></i> Privacy policy</a></li>
-              <li><a href="it_news.html"><i class="fa fa-angle-right"></i> News</a></li>
-              <li><a href="it_contact.html"><i class="fa fa-angle-right"></i> Contact us</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <div class="main-heading left_text">
-              <h2>Services</h2>
-            </div>
-            <ul class="footer-menu">
-              <li><a href="it_data_recovery.html"><i class="fa fa-angle-right"></i> Data recovery</a></li>
-              <li><a href="it_computer_repair.html"><i class="fa fa-angle-right"></i> Computer repair</a></li>
-              <li><a href="it_mobile_service.html"><i class="fa fa-angle-right"></i> Mobile service</a></li>
-              <li><a href="it_network_solution.html"><i class="fa fa-angle-right"></i> Network solutions</a></li>
-              <li><a href="it_techn_support.html"><i class="fa fa-angle-right"></i> Technical support</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <div class="main-heading left_text">
-              <h2>Contact us</h2>
-            </div>
-            <p>123 Second Street Fifth Avenue,<br>
-              Manhattan, New York<br>
-              <span style="font-size:18px;"><a href="tel:+9876543210">+987 654 3210</a></span></p>
-            <div class="footer_mail-section">
-              <form>
-                <fieldset>
-                <div class="field">
-                  <input placeholder="Email" type="text">
-                  <button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
-                </div>
-                </fieldset>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="cprt">
-        <p>ItNext © Copyrights 2019 Design by html.design</p>
-      </div>
-    </div>
-  </div>
-</footer>
-<!-- end footer -->
-<!-- js section -->
-<script src="assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="assets/js/slick.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<!-- menu js -->
-<script src="assets/js/menumaker.js"></script>
-<!-- wow animation -->
-<script src="assets/js/wow.js"></script>
-<!-- custom js -->
-<script src="assets/js/custom.js"></script>
-
-<script>
-  $(document).ready(function(){
-  $('.slide').slick({
-    dots:true,
-    slidesToShow: 4,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000
-  });
-
-  $('.new_price').html()
-});
-</script>
-</body>
+		<div class="section padding_layout_1 product_detail">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-xl-6 col-lg-12 col-md-12">
+								<div class="product_detail_feature_img hizoom hi2">
+									<div class="product_img">
+										<img class="img-responsive" th:src="@{'/assets/images/' + ${itemImage} + '.jpg'}" alt=""/>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-12 col-md-12 product_detail_side detail_style1">
+								<div class="product-heading">
+									<h2 th:text="${itemName}"></h2>
+								</div>
+								<div class="product-detail-side">
+									<span class="new-price"><span th:text="${itemPrice}"></span> Ft</span>
+								</div>
+								<div class="detail-contant">
+									<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. 
+										Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.<br>
+										<span class="stock"><span th:text="${itemStock}"></span> darab raktáron</span>
+									</p>
+									<form class="cart" method="post" action="it_cart.html">
+										<div class="quantity">
+										<input step="1" min="1" max="5" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" type="number">
+										</div>
+										<button type="submit" class="btn sqaure_bt">Kosárba rakás</button>
+									</form>
+								</div>
+								<div class="share-post">
+									<a href="#" class="share-text">Megosztás</a>
+									<ul class="social_icons">
+										<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+										<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+										<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+										<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="full">
+									<div class="tab_bar_section">
+										<ul class="nav nav-tabs" role="tablist">
+											<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#description">Tárgy leírása</a> </li>
+										</ul>
+										<div class="tab-content">
+											<div id="description" class="tab-pane active">
+												<div class="product_desc">
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac elementum elit. Morbi eu arcu ipsum. Aliquam lobortis accumsan quam ac convallis. 
+													Fusce elit mauris, aliquet at odio vel, convallis vehicula nisi. Morbi vitae porttitor dolor. Integer eget metus sem. Nam venenatis mauris vel leo pulvinar, 
+													id rutrum dui varius. Nunc ac varius quam, non convallis magna. Donec suscipit commodo dapibus.<br>
+													<br>
+													Vestibulum et ullamcorper ligula. Morbi bibendum tempor rutrum. 
+													Pelle tesque auctor purus id molestie ornare.Donec eu lobortis risus. Pellentesque sed aliquam lorem. Praesent pulvinar lorem vel mauris ultrices posuere. 
+													Phasellus elit ex, gravida a semper ut, venenatis vitae diam. Nullam eget leo massa. Aenean eu consequat arcu, vitae scelerisque quam. Suspendisse risus turpis, 
+													pharetra a finibus vitae, lobortis et mi.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="full">
+									<div class="main_heading text_align_left" style="margin-bottom: 35px;">
+										<h3>Kapcsolódó termékek</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
+								<div class="product_list">
+									<div class="product_img">
+										<img class="img-responsive" src="/assets/images/1.jpg" alt="">
+									</div>
+									<div class="product_detail_btm">
+										<div class="center">
+											<h4><a href="it_shop_detail.html">Norton Internet Security</a></h4>
+										</div>
+										<div class="starratin">
+											<div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+										</div>
+										<div class="product_price">
+											<p><span class="old_price">$15.00</span> – <span class="new_price">$25.00</span></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div th:insert="home :: footer"></div>
+	</body>
 </html>

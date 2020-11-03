@@ -1,17 +1,38 @@
 package hu.csapatnev.webshop;
 
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.web.context.support.ServletContextResource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
+import org.springframework.web.servlet.resource.PathResourceResolver;
+import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
+import org.springframework.web.servlet.resource.ResourceResolver;
+import org.springframework.web.servlet.resource.ResourceUrlProvider;
+import org.springframework.web.servlet.resource.ResourceUrlProviderExposingInterceptor;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
@@ -19,7 +40,17 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @EnableWebMvc
 @Configuration
 public class Config implements WebMvcConfigurer {
+	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+            "classpath:/META-INF/resources/", "classpath:/resources/",
+            "classpath:/static/", "classpath:/public/" };
+	
 	private Properties properties;
+	
+	@Autowired
+	private ServletContext servletContext;
+	
+	@Autowired
+	private ApplicationContext appContext;
 	
     @Bean
     public ITemplateResolver templateResolver() {
@@ -79,5 +110,40 @@ public class Config implements WebMvcConfigurer {
         hibernateProperties.setProperty("hibernate.show_sql", "false");
     
         return hibernateProperties;
+    }
+    
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+            .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
+    }
+	
+    @Bean
+    public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
+        SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
+        Map<String, Object> map = new LinkedHashMap<>();
+        ResourceHttpRequestHandler resourceHttpRequestHandler = new ResourceHttpRequestHandler();
+        List<Resource> locations = new ArrayList<>();
+        locations.add(new ServletContextResource(servletContext, "/"));
+        for (String s : CLASSPATH_RESOURCE_LOCATIONS)
+        	locations.add(new ClassPathResource(s.substring("classpath:/".length())));
+        resourceHttpRequestHandler.setLocations(locations);
+        resourceHttpRequestHandler.setApplicationContext(appContext);
+
+        List<ResourceResolver> resourceResolvers = new ArrayList<>();
+        PathResourceResolver resourceResolver = new PathResourceResolver();
+        resourceResolver.setAllowedLocations(locations.toArray(new Resource[locations.size()]));
+        resourceResolvers.add(resourceResolver);
+
+        resourceHttpRequestHandler.setResourceResolvers(resourceResolvers);
+        map.put("/**", resourceHttpRequestHandler);
+        simpleUrlHandlerMapping.setUrlMap(map);
+        ResourceUrlProvider resourceUrlProvider = new ResourceUrlProvider();
+        Map<String, ResourceHttpRequestHandler> handlerMap = new LinkedHashMap<>();
+        handlerMap.put("/**", resourceHttpRequestHandler);
+        resourceUrlProvider.setHandlerMap(handlerMap);
+        ResourceUrlProviderExposingInterceptor interceptor = new ResourceUrlProviderExposingInterceptor(resourceUrlProvider);
+        simpleUrlHandlerMapping.setInterceptors(new Object[]{interceptor});
+        return simpleUrlHandlerMapping;
     }
 }

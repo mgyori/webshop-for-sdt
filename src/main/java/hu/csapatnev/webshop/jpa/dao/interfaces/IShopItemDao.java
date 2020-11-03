@@ -13,4 +13,5 @@ public interface IShopItemDao {
     void delete(ShopItem entity);
     void deleteById(long entityId);
     public Optional<List<ShopItem>> getBestOf(int num);
+    public Optional<ShopItem> findByLink(String link);
 }

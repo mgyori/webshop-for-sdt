@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 
 import org.springframework.cache.annotation.Cacheable;
-
+import org.checkerframework.common.aliasing.qual.Unique;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import lombok.AllArgsConstructor;
@@ -39,6 +39,12 @@ public class ShopItem implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	/**
+	 * A tárgy URL hivatkozása.
+	 */
+	@Unique
+	private String link;
 	
 	/**
 	 * A tárgy neve. Nem lehet üres!
