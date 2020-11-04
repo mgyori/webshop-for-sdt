@@ -21,15 +21,23 @@ public class DetailsController {
 		return "notfound";
 	}
 	
-	@RequestMapping(value = "/details/{id}")
-	public String getDetails(@PathVariable long id, Model model) {
-		ShopItem item = shopItems.findOne(id);
+	@RequestMapping(value = "/details/{link}")
+	public String getDetails(@PathVariable String link, Model model) {
+		ShopItem item = shopItems.findByLink(link);
 		
-		if(id == 0 || item == null) {
+		if(link.isEmpty() || item == null) {
 			return "notfound";
 		} else {
 			model.addAttribute("itemName", item.getName());
 			model.addAttribute("itemImage", item.getImage());
+			model.addAttribute("itemStock", item.getInstock());
+			model.addAttribute("itemPrice", item.getPrice());
+			model.addAttribute("itemShortDesc", item.getShortDescription());
+			model.addAttribute("itemDesc", item.getDescription());
+			
+			model.addAttribute("recommended", shopItems.getByCategory(item.getCategory(), 3));
+			
+			model.addAttribute("current", "details");
 			return "details";
 		}
 		

@@ -1,401 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<!-- basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- mobile metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<!-- site metas -->
-<title>Webshop</title>
-<!-- site icons -->
-<link rel="icon" href="assets/images/icon.svg"/>
-<!-- bootstrap css -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-<!-- Site css -->
-<link rel="stylesheet" href="assets/css/style.css" />
-<!-- responsive css -->
-<link rel="stylesheet" href="assets/css/responsive.css" />
-<!-- colors css -->
-<link rel="stylesheet" href="assets/css/colors1.css" />
-<!-- wow Animation css -->
-<link rel="stylesheet" href="assets/css/animate.css" />
+<html lang="hu">
+	<head th:fragment="head">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<title>Webshop</title>
+		<link rel="icon" th:href="@{/assets/images/icon.svg}"/>
+		<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}" />
+		<link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+		<link rel="stylesheet" th:href="@{/assets/css/responsive.css}" />
+		<link rel="stylesheet" th:href="@{/assets/css/colors1.css}" />
+		<link rel="stylesheet" th:href="@{/assets/css/animate.css}" />
 
-<!--Slick css-->
-<link rel="stylesheet" type="text/css" href="assets/css/slick.css"/>
-<link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/assets/css/slick.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/assets/css/slick-theme.css}" />
 
-</head>
-<body id="default_theme" class="it_service">
-<!-- loader -->
-<div class="bg_load"> <img class="loader_animation" src="assets/images/icon.svg" alt="#" /> </div>
-<!-- end loader -->
-<!-- header -->
-<header id="default_header" class="header_style_1">
-  <!-- header bottom -->
-  <div class="header_bottom">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-          <!-- logo start -->
-          <div class="logo"> <a href="#"><img src="assets/images/icon.svg" alt="logo" /></a> </div>
-          <!-- logo end -->
-        </div>
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-          <!-- menu start -->
-          <div class="menu_side">
-            <div id="navbar_menu">
-              <ul class="first-ul">
-                <li> <a class="active" href="#">Home</a>
-                </li>
-                <li> <a href="shop.html">Shop</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- menu end -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- header bottom end -->
-</header>
-<!-- end header -->
-<!-- section -->
-<div id="slider" class="section main_slider">
-  <div class="container-fuild">
-    <div class="row">
-    </div>
-  </div>
-</div>
-<!-- end section -->
-<!-- section -->
-<div class="section padding_layout_1">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <div class="main_heading text_align_center">
-            <h2>Nézz körül webshopunkban</h2>
-            <p class="large">A minőség garantált!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="full text_align_center margin_bottom_30">
-          <div class="center">
-            <div class="icon"> <img src="assets/images/i1.png" alt="#" /> </div>
-          </div>
-          <h4 class="theme_color">Számítógép alkatrészek</h4>
-          <p>Garantáltan minőségi és megbízható hardverek, előre összerakott komplett asztali számítógépek!</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="full text_align_center margin_bottom_30">
-          <div class="center">
-            <div class="icon"> <img src="assets/images/i2.png" alt="#" /> </div>
-          </div>
-          <h4 class="theme_color">Okoseszközök</h4>
-          <p> Innovatív technológiák, okosvilágítás, mozgás- és hangérzékelővel felszerelt rendszerek, építs ki akár egy komplett okosotthont!</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="full text_align_center margin_bottom_30">
-          <div class="center">
-            <div class="icon"> <img src="assets/images/i3.png" alt="#" /> </div>
-          </div>
-          <h4 class="theme_color">Notebookok</h4>
-          <p>Középkategóriás és csúcskategóriás, új és használt laptopok, akár irodai munkára, multimédiás használatra vagy játékra! </p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="full text_align_center margin_bottom_30 margin_0">
-          <div class="center">
-            <div class="icon"> <img src="assets/images/i4.png" alt="#" /> </div>
-          </div>
-          <h4 class="theme_color">Hálózati eszközök, kiegészítők</h4>
-          <p>Routerek, switchek, jelerősítők, minden, ami egy otthoni vagy egy vállalati hálózat kiépítéséhez megfelelhet, határ a csillagos ég!</p>
-        </div>
-      </div>
-    </div>
-    <div class="row" style="margin-top: 35px">
-      <div class="col-md-8">
-        <div class="full margin_bottom_30">
-          <div class="accordion border_circle">
-            <div class="bs-example">
-              <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-bar-chart" aria-hidden="true"></i> Problémád van? Kérd munkatársaink segítségét!<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                      <p> Bármi kérdésed merül fel webshopunkkal kapcsolatban nyugodtan fordulj munkatársainkhoz, 12 órán belül választ fogsz kapni! </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="fa fa-plane"></i> Termékértékelések vásárlási tapasztalat alapján<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p> Vásároltál egy terméket és elégedett vagy vele? Értékeld, és fejtsd ki róla véleményedet, ezzel visszajelezve webshopunknak az adott termékről. </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><i class="fa fa-star"></i> Hibás terméket kaptál kézhez?<i class="fa fa-angle-down"></i></a> </p>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse">
-                    <div class="panel-body">
-                      <p> Hibás termék került kiszállításra? A kiszállítás napjától számítva 3 napon belül jelezz webshopunknak, azonnal utánajárunk és kicseréljük a termékedet! </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="full" style="margin-top: 35px;">
-          <h3>Vedd fel velünk a kapcsolatot</h3>
-          <p> Kollegáink egész nap elérhetőek! </p>
-          <p> E-mail: webshop@info.hu </p>
-          <p> Mobil: +36 1 666 999 </p>
-          <p><a class="btn main_bt" href="#">Üzenetet írok</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end section -->
-<!-- section -->
-<div class="section padding_layout_1 light_silver gross_layout">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <div class="main_heading text_align_left">
-            <h2>Szolgáltatásaink</h2>
-            <p class="large">Mert mi mindenre figyelünk!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="full">
-              <div class="service_blog_inner">
-                <div class="icon text_align_left"><img src="assets/images/si1.png" alt="#" /></div>
-                <h4 class="service-heading">Gyors szolgáltatás</h4>
-                <p>Webshopunk igyekszik a lehető legegyszerűbb módon működni, ezzel biztosítva a gyors előrehaladást. </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="full">
-              <div class="service_blog_inner">
-                <div class="icon text_align_left"><img src="assets/images/si3.png" alt="#" /></div>
-                <h4 class="service-heading">Gyors kiszállítás</h4>
-                <p>Igyekszünk termékeinket a lehető leghamarabb, megrendeléstől számítva 1-2 napon belül kiszállítani.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="full">
-              <div class="service_blog_inner">
-                <div class="icon text_align_left"><img src="assets/images/si5.png" alt="#" /></div>
-                <h4 class="service-heading">90 nap garancia</h4>
-                <p>Legtöbb termékünkre 3 hónapos garanciát vállalunk vagy akár többet is.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end section -->
-<!-- section -->
-<div class="section padding_layout_1">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="full">
-          <div class="main_heading text_align_center">
-            <h2>Heti akcióink</h2>
-            <p class="large">Heti leárazásaink, legjobb ajánlataink egy helyen</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row slide">
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <a href="it_shop_detail.html">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4>Norton Internet Security</h4>
-            </div>
-            <div class="product_price">
-              <p><span class="new_price">50 000 Ft</span></p>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <a href="it_shop_detail.html">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4>Norton Internet Security</h4>
-            </div>
-            <div class="product_price">
-              <p><span class="new_price">50 000 Ft</span></p>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <a href="it_shop_detail.html">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4>Norton Internet Security</h4>
-            </div>
-            <div class="product_price">
-              <p><span class="new_price">50 000 Ft</span></p>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <a href="it_shop_detail.html">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4>Norton Internet Security</h4>
-            </div>
-            <div class="product_price">
-              <p><span class="new_price">50 000 Ft</span></p>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <a href="it_shop_detail.html">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4>Norton Internet Security</h4>
-            </div>
-            <div class="product_price">
-              <p><span class="new_price">50 000 Ft</span></p>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <a href="it_shop_detail.html">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4>Norton Internet Security</h4>
-            </div>
-            <div class="product_price">
-              <p><span class="new_price">50 000 Ft</span></p>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <a href="it_shop_detail.html">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4>Norton Internet Security</h4>
-            </div>
-            <div class="product_price">
-              <p><span class="new_price">50 000 Ft</span></p>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-        <a href="it_shop_detail.html">
-        <div class="product_list">
-          <div class="product_img"> <img class="img-responsive" src="assets/images/1.jpg" alt=""> </div>
-          <div class="product_detail_btm">
-            <div class="center">
-              <h4>Norton Internet Security</h4>
-            </div>
-            <div class="product_price">
-              <p><span class="new_price">50 000 Ft</span></p>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end section -->
-<!-- footer -->
+		<base href="http://127.0.0.1:8080/">
+	</head>
+	<body id="default_theme" class="it_service">
+		<div class="bg_load" th:fragment="loading">
+			<img class="loader_animation" src="/assets/images/icon.svg" alt="#" />
+		</div>
 
-<footer class="footer_style_2">
-  <div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3808.9297321932386!2d21.639769267059105!3d47.5420941145914!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8426ebc782bcb06b!2sDebreceni%20Egyetem%20Informatikai%20Kar!5e0!3m2!1shu!2shu!4v1603377804546!5m2!1shu!2shu" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-  </div>
-  <div class="cprt">
-    <p>Webshop © Copyrights 2019 Design by html.design</p>
-  </div>
-</footer>
-<!-- end footer -->
-<!-- js section -->
-<script src="assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="assets/js/slick.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<!-- menu js -->
-<script src="assets/js/menumaker.js"></script>
-<!-- wow animation -->
-<script src="assets/js/wow.js"></script>
-<!-- custom js -->
-<script src="assets/js/custom.js"></script>
+		<header id="default_header" class="header_style_1" th:fragment="menu">
+			<div class="header_bottom">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+							<div class="logo"> <a href="#"><img src="/assets/images/icon.svg" alt="logo" /></a> </div>
+						</div>
+						<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+							<div class="menu_side">
+								<div id="navbar_menu">
+									<ul class="first-ul">
+										<li>
+											<a th:class="${current == 'home' ? 'active' : ''}" href="/home">Főoldal</a>
+										</li>
+										<li>
+											<a th:class="${current == 'shop' ? 'active' : ''}" href="/shop">Tárgyak</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
-<script>
-  $(document).ready(function(){
-  $('.slide').slick({
-    dots:true,
-    slidesToShow: 4,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000
-  });
+		<div class="section padding_layout_1 testmonial_section white_fonts">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="full">
+							<div class="main_heading text_align_left">
+							<h2 style="text-transform: none;">Vásárolj nálunk!</h2>
+							<p class="large">Hidd el, megéri itt elkölteni minden pénzed..</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-  $('.new_price').html()
-});
-</script>
-</body>
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="full">
+							<div class="contact_us_section">
+								<div class="call_icon">
+									<img src="/assets/images/phone_icon.png" alt="#">
+								</div>
+								<div class="inner_cont">
+									<h2>HÍVJON MINKET BÁTRAN</h2>
+									<p>HA valamit nem tud vagy nem biztos benne, vegye fel velünk a kapcsolatot.</p>
+								</div>
+								<div class="button_Section_cont"> <a class="btn dark_gray_bt" href="/contact">Kapcsolat</a> </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="section padding_layout_1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="full">
+							<div class="main_heading text_align_center">
+								<h2>Nézz körül webshopunkban</h2>
+								<p class="large">A minőség garantált!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+						<div class="full text_align_center margin_bottom_30">
+							<div class="center">
+								<div class="icon"> <img src="/assets/images/i1.png" alt="#" /> </div>
+							</div>
+							<h4 class="theme_color">Számítógép alkatrészek</h4>
+							<p>Garantáltan minőségi és megbízható hardverek, előre összerakott komplett asztali számítógépek!</p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+						<div class="full text_align_center margin_bottom_30">
+							<div class="center">
+								<div class="icon"> <img src="/assets/images/i2.png" alt="#" /> </div>
+							</div>
+							<h4 class="theme_color">Okoseszközök</h4>
+							<p> Innovatív technológiák, okosvilágítás, mozgás- és hangérzékelővel felszerelt rendszerek, építs ki akár egy komplett okosotthont!</p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+						<div class="full text_align_center margin_bottom_30">
+							<div class="center">
+								<div class="icon"> <img src="/assets/images/i3.png" alt="#" /> </div>
+							</div>
+							<h4 class="theme_color">Notebookok</h4>
+							<p>Középkategóriás és csúcskategóriás, új és használt laptopok, akár irodai munkára, multimédiás használatra vagy játékra!</p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+						<div class="full text_align_center margin_bottom_30 margin_0">
+							<div class="center">
+								<div class="icon"> <img src="/assets/images/i4.png" alt="#" /> </div>
+							</div>
+							<h4 class="theme_color">Hálózati eszközök, kiegészítők</h4>
+							<p>Routerek, switchek, jelerősítők, minden, ami egy otthoni vagy egy vállalati hálózat kiépítéséhez megfelelhet, határ a csillagos ég!</p>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 35px">
+					<div class="col-md-8">
+						<div class="full margin_bottom_30">
+							<div class="accordion border_circle">
+								<div class="bs-example">
+									<div class="panel-group" id="accordion">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-bar-chart" aria-hidden="true"></i> Problémád van? Kérd munkatársaink segítségét!<i class="fa fa-angle-down"></i></a> </p>
+											</div>
+											<div id="collapseOne" class="panel-collapse collapse in">
+												<div class="panel-body">
+													<p>Bármi kérdésed merül fel webshopunkkal kapcsolatban nyugodtan fordulj munkatársainkhoz, 12 órán belül választ fogsz kapni! </p>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="fa fa-plane"></i> Termékértékelések vásárlási tapasztalat alapján<i class="fa fa-angle-down"></i></a> </p>
+											</div>
+											<div id="collapseTwo" class="panel-collapse collapse">
+												<div class="panel-body">
+													<p>Vásároltál egy terméket és elégedett vagy vele? Értékeld, és fejtsd ki róla véleményedet, ezzel visszajelezve webshopunknak az adott termékről. </p>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<p class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><i class="fa fa-star"></i> Hibás terméket kaptál kézhez?<i class="fa fa-angle-down"></i></a> </p>
+											</div>
+											<div id="collapseThree" class="panel-collapse collapse">
+												<div class="panel-body">
+													<p>Hibás termék került kiszállításra? A kiszállítás napjától számítva 3 napon belül jelezz webshopunknak, azonnal utánajárunk és kicseréljük a termékedet! </p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="full" style="margin-top: 35px;">
+							<h3>Vedd fel velünk a kapcsolatot</h3>
+							<p> Kollegáink egész nap elérhetőek!</p>
+							<p> E-mail: webshop@info.hu </p>
+							<p> Mobil: +36 1 666 999 </p>
+							<p><a class="btn main_bt" href="#">Üzenetet írok</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="section padding_layout_1 light_silver gross_layout">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="full">
+							<div class="main_heading text_align_left">
+								<h2>Szolgáltatásaink</h2>
+								<p class="large">Mert mi mindenre figyelünk!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="full">
+									<div class="service_blog_inner">
+										<div class="icon text_align_left"><img src="/assets/images/si1.png" alt="#" /></div>
+										<h4 class="service-heading">Gyors szolgáltatás</h4>
+										<p>Webshopunk igyekszik a lehető legegyszerűbb módon működni, ezzel biztosítva a gyors előrehaladást. </p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="full">
+									<div class="service_blog_inner">
+										<div class="icon text_align_left"><img src="/assets/images/si3.png" alt="#" /></div>
+										<h4 class="service-heading">Gyors kiszállítás</h4>
+										<p>Igyekszünk termékeinket a lehető leghamarabb, megrendeléstől számítva 1-2 napon belül kiszállítani.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="full">
+									<div class="service_blog_inner">
+										<div class="icon text_align_left"><img src="/assets/images/si5.png" alt="#" /></div>
+										<h4 class="service-heading">90 nap garancia</h4>
+										<p>Legtöbb termékünkre 3 hónapos garanciát vállalunk vagy akár többet is.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="section padding_layout_1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="full">
+							<div class="main_heading text_align_center">
+								<h2>Heti akcióink</h2>
+								<p class="large">Heti leárazásaink, legjobb ajánlataink egy helyen</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row slide">
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all" th:each="item: ${shopItems}">
+						<a th:href="@{'/details/' + ${item.link}}">
+							<div class="product_list">
+								<div class="product_img"> <img class="img-responsive" th:src="@{'/assets/images/' + ${item.image} + '.jpg'}" alt=""> </div>
+								<div class="product_detail_btm">
+									<div class="center">
+										<h4 th:text="${item.name}"></h4>
+									</div>
+									<div class="product_price">
+										<p><span class="new_price"><span th:text="${item.price}"></span> Ft</span></p>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div th:fragment="footer">
+			<footer class="footer_style_2">
+				<div>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3808.9297321932386!2d21.639769267059105!3d47.5420941145914!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8426ebc782bcb06b!2sDebreceni%20Egyetem%20Informatikai%20Kar!5e0!3m2!1shu!2shu!4v1603377804546!5m2!1shu!2shu" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+				<div class="cprt">
+					<p>Webshop © Copyrights 2020</p>
+				</div>
+			</footer>
+
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/slick.min.js"></script>
+			<script src="/assets/js/bootstrap.min.js"></script>
+			<script src="/assets/js/menumaker.js"></script>
+			<script src="/assets/js/wow.js"></script>
+			<script src="/assets/js/custom.js"></script>
+		</div>
+
+		<script>
+			$(document).ready(function(){
+				$('.slide').slick({
+					dots:true,
+					slidesToShow: 4,
+					slidesToScroll: 1,
+					autoplay: true,
+					autoplaySpeed: 2000
+				});
+			});
+		</script>
+	</body>
 </html>

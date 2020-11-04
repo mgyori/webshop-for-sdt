@@ -2293,7 +2293,8 @@ span.skill {
 .pagination>li>a:focus,
 .pagination>li>a:hover,
 .pagination>li>span:focus,
-.pagination>li>span:hover {
+.pagination>li>span:hover,
+.pagination>li>a.active {
 	z-index: 2;
 	color: #fff;
 	background-color: #039ee3;
@@ -2742,13 +2743,15 @@ span.skill {
 }
 
 .categary li:hover,
-.categary li:focus {
+.categary li:focus,
+.categary li.active {
 	padding-left: 30px;
 	background: #039ee3;
 }
 
 .categary li:hover a,
-.categary li:focus a {
+.categary li:focus a,
+.categary li.active a {
 	color: #fff;
 }
 
@@ -3204,7 +3207,7 @@ span.skill {
 	-------------------------------------------------------------------*/
 
 .testmonial_section {
-	background-image: url('../images/it_service/test_bg.png');
+	background-image: url('../images/test_bg.png');
 	background-size: cover;
 	padding-bottom: 185px;
 }
@@ -3477,7 +3480,7 @@ footer ul.social_icons {
 
 .gross_layout::after {
 	position: absolute;
-	background: url(../images/it_service/dark_bg_img.png);
+	background: url(../images/dark_bg_img.png);
 	width: 35%;
 	height: 100%;
 	right: 0;
@@ -3502,7 +3505,7 @@ footer ul.social_icons {
 
 .gross_layout.right_gross_layout::after {
 	position: absolute;
-	background: url(../images/it_service/dark_bg_img2.png);
+	background: url(../images/dark_bg_img2.png);
 	width: 35%;
 	height: 100%;
 	left: 0;
@@ -3610,7 +3613,7 @@ footer ul.social_icons {
 }
 
 .inner_banner_section {
-	background: url('../images/it_service/inner_page_banner.jpg');
+	background: url('../images/inner_page_banner.jpg');
 	min-height: 245px;
 	background-size: cover;
 	background-position: center center;
