@@ -18,7 +18,7 @@ import hu.csapatnev.webshop.jpa.service.ShopItemService;
 
 @Controller
 public class ShopController {
-	private int limit = 3;
+	private int limit = 20;
 
 	@Autowired
 	private ShopItemService shopItems;

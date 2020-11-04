@@ -50,8 +50,12 @@ public class ShopItemService {
     
     public Page<ShopItem> getItems(int page, int limit, String sortBy, int category) {
         Pageable pageableRequest = PageRequest.of(page, limit, Sort.by(sortBy)); 
-        Page<ShopItem> items = shopItemRepository.findAll(pageableRequest);
-   
+        Page<ShopItem> items;
+        if (category == 0)
+        	items = shopItemRepository.findAll(pageableRequest);
+        else
+        	items = shopItemRepository.findByCategory(category, pageableRequest);
+        
         return items;
     }
     
