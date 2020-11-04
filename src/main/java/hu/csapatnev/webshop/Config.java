@@ -27,6 +27,7 @@ import org.springframework.web.context.support.ServletContextResource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
@@ -40,110 +41,119 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @EnableWebMvc
 @Configuration
 public class Config implements WebMvcConfigurer {
-	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-            "classpath:/META-INF/resources/", "classpath:/resources/",
-            "classpath:/static/", "classpath:/public/" };
-	
+	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = { "classpath:/META-INF/resources/",
+			"classpath:/resources/", "classpath:/static/", "classpath:/public/" };
+
 	private Properties properties;
-	
+
 	@Autowired
 	private ServletContext servletContext;
-	
+
 	@Autowired
 	private ApplicationContext appContext;
-	
-    @Bean
-    public ITemplateResolver templateResolver() {
-        ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
-        resolver.setPrefix("/templates/");
-        resolver.setSuffix(".html");
-        resolver.setTemplateMode(TemplateMode.HTML);
-        resolver.setCharacterEncoding("UTF-8");
-        resolver.setCacheable(false);
-        return resolver;
-    }
-    
-    @Bean
-    public DataSource dataSource() {
-    	Properties prop = getProperties();
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUsername(prop.getProperty("db.user"));
-        dataSource.setPassword(prop.getProperty("db.pass"));
-        dataSource.setUrl("jdbc:mysql://" + prop.getProperty("db.host") + ":" + prop.getProperty("db.port") + "/" + prop.getProperty("db.base") + "?createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        return dataSource;
-    }
-    
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "hu.csapatnev.webshop.jpa.model" });
 
-        final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        em.setJpaVendorAdapter(vendorAdapter);
-        em.setJpaProperties(additionalProperties());
+	@Bean
+	public ITemplateResolver templateResolver() {
+		ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
+		resolver.setPrefix("/templates/");
+		resolver.setSuffix(".html");
+		resolver.setTemplateMode(TemplateMode.HTML);
+		resolver.setCharacterEncoding("UTF-8");
+		resolver.setCacheable(false);
+		return resolver;
+	}
 
-        return em;
-    }
-    
-    public Properties getProperties() {
-    	if (this.properties == null) {
-	    	this.properties = new Properties();
-		    InputStream inputStream = App.class.getClassLoader().getResourceAsStream("application.properties");
-		    try {
-		    	this.properties.load(inputStream);
-		    } catch(Exception e) {
-		    	System.out.println(e);
-		    }
-    	}
-	    
-	    return this.properties;
-    }
-    
-    final Properties additionalProperties() {
-        final Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
-        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-        hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", "false");
-        hibernateProperties.setProperty("hibernate.cache.use_query_cache", "false");
-        hibernateProperties.setProperty("hibernate.show_sql", "false");
-    
-        return hibernateProperties;
-    }
-    
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
-            .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
-    }
-	
-    @Bean
-    public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
-        SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
-        Map<String, Object> map = new LinkedHashMap<>();
-        ResourceHttpRequestHandler resourceHttpRequestHandler = new ResourceHttpRequestHandler();
-        List<Resource> locations = new ArrayList<>();
-        locations.add(new ServletContextResource(servletContext, "/"));
-        for (String s : CLASSPATH_RESOURCE_LOCATIONS)
-        	locations.add(new ClassPathResource(s.substring("classpath:/".length())));
-        resourceHttpRequestHandler.setLocations(locations);
-        resourceHttpRequestHandler.setApplicationContext(appContext);
+	@Bean
+	public DataSource dataSource() {
+		Properties prop = getProperties();
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		dataSource.setUsername(prop.getProperty("db.user"));
+		dataSource.setPassword(prop.getProperty("db.pass"));
+		dataSource.setUrl("jdbc:mysql://" + prop.getProperty("db.host") + ":" + prop.getProperty("db.port") + "/"
+				+ prop.getProperty("db.base")
+				+ "?createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+		return dataSource;
+	}
 
-        List<ResourceResolver> resourceResolvers = new ArrayList<>();
-        PathResourceResolver resourceResolver = new PathResourceResolver();
-        resourceResolver.setAllowedLocations(locations.toArray(new Resource[locations.size()]));
-        resourceResolvers.add(resourceResolver);
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+		final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+		em.setDataSource(dataSource());
+		em.setPackagesToScan(new String[] { "hu.csapatnev.webshop.jpa.model" });
 
-        resourceHttpRequestHandler.setResourceResolvers(resourceResolvers);
-        map.put("/**", resourceHttpRequestHandler);
-        simpleUrlHandlerMapping.setUrlMap(map);
-        ResourceUrlProvider resourceUrlProvider = new ResourceUrlProvider();
-        Map<String, ResourceHttpRequestHandler> handlerMap = new LinkedHashMap<>();
-        handlerMap.put("/**", resourceHttpRequestHandler);
-        resourceUrlProvider.setHandlerMap(handlerMap);
-        ResourceUrlProviderExposingInterceptor interceptor = new ResourceUrlProviderExposingInterceptor(resourceUrlProvider);
-        simpleUrlHandlerMapping.setInterceptors(new Object[]{interceptor});
-        return simpleUrlHandlerMapping;
-    }
+		final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		em.setJpaVendorAdapter(vendorAdapter);
+		em.setJpaProperties(additionalProperties());
+
+		return em;
+	}
+
+	public Properties getProperties() {
+		if (this.properties == null) {
+			this.properties = new Properties();
+			InputStream inputStream = App.class.getClassLoader().getResourceAsStream("application.properties");
+			try {
+				this.properties.load(inputStream);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+
+		return this.properties;
+	}
+
+	final Properties additionalProperties() {
+		final Properties hibernateProperties = new Properties();
+		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+		hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", "false");
+		hibernateProperties.setProperty("hibernate.cache.use_query_cache", "false");
+		hibernateProperties.setProperty("hibernate.show_sql", "false");
+
+		return hibernateProperties;
+	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**").addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
+	}
+
+	@Bean
+	public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
+		SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
+		Map<String, Object> map = new LinkedHashMap<>();
+		ResourceHttpRequestHandler resourceHttpRequestHandler = new ResourceHttpRequestHandler();
+		List<Resource> locations = new ArrayList<>();
+		locations.add(new ServletContextResource(servletContext, "/"));
+		for (String s : CLASSPATH_RESOURCE_LOCATIONS)
+			locations.add(new ClassPathResource(s.substring("classpath:/".length())));
+		resourceHttpRequestHandler.setLocations(locations);
+		resourceHttpRequestHandler.setApplicationContext(appContext);
+
+		List<ResourceResolver> resourceResolvers = new ArrayList<>();
+		PathResourceResolver resourceResolver = new PathResourceResolver();
+		resourceResolver.setAllowedLocations(locations.toArray(new Resource[locations.size()]));
+		resourceResolvers.add(resourceResolver);
+
+		resourceHttpRequestHandler.setResourceResolvers(resourceResolvers);
+		map.put("/**", resourceHttpRequestHandler);
+		simpleUrlHandlerMapping.setUrlMap(map);
+		ResourceUrlProvider resourceUrlProvider = new ResourceUrlProvider();
+		Map<String, ResourceHttpRequestHandler> handlerMap = new LinkedHashMap<>();
+		handlerMap.put("/**", resourceHttpRequestHandler);
+		resourceUrlProvider.setHandlerMap(handlerMap);
+		ResourceUrlProviderExposingInterceptor interceptor = new ResourceUrlProviderExposingInterceptor(
+				resourceUrlProvider);
+		simpleUrlHandlerMapping.setInterceptors(new Object[] { interceptor });
+		return simpleUrlHandlerMapping;
+	}
+
+	@Bean
+	public SimpleMappingExceptionResolver createSimpleMappingExceptionResolver() {
+		SimpleMappingExceptionResolver r = new SimpleMappingExceptionResolver();
+		r.setDefaultErrorView("error");
+		r.setExceptionAttribute("ex");
+		return r;
+	}
 }

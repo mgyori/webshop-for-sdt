@@ -9,7 +9,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
-						<h4>A megadott tárgy nem található...</h4>
+						<h4>Ajjaj!</h4>
+						URL: <span th:text="${url}"></span>
+						Hiba:  <span th:text="${exception.message}"></span>
+						<c:forEach items="${exception.stackTrace}" var="ste">${ste}</c:forEach>
 					</div>
 				</div>
 			</div>
