@@ -43,12 +43,14 @@ public class ShopController {
 		int page = Math.max(1, args.getParamInt("page"));
 		String sort = getValidSortOption(args.getParamString("sort", "id"));
 		int category = args.getParamInt("category");
+		String search = args.getParamString("search");
 		
-		Page<ShopItem> items = shopItems.getItems(page - 1, limit, sort, category);
+		Page<ShopItem> items = shopItems.getItems(page - 1, limit, sort, category, search);
 		List<Integer> pagination = Utils.buildPagination(items, 5);
 		args.removeParam("page");
 		
 		model.addAttribute("url", args.buildUrl());
+		model.addAttribute("search", search);
 		model.addAttribute("categories", shopCategories.findAll());
 		model.addAttribute("items", items.getContent());
 		model.addAttribute("page", page);

@@ -48,13 +48,18 @@ public class ShopItemService {
     	return dao.getBestOf(num).get();
     }
     
-    public Page<ShopItem> getItems(int page, int limit, String sortBy, int category) {
+    public Page<ShopItem> getItems(int page, int limit, String sortBy, int category, String name) {
         Pageable pageableRequest = PageRequest.of(page, limit, Sort.by(sortBy)); 
         Page<ShopItem> items;
-        if (category == 0)
-        	items = shopItemRepository.findAll(pageableRequest);
-        else
-        	items = shopItemRepository.findByCategory(category, pageableRequest);
+        
+        if (!name.isEmpty()) {
+        	items = shopItemRepository.findByPartialName("%" + name + "%", pageableRequest);
+        } else {
+	        if (category == 0)
+	        	items = shopItemRepository.findAll(pageableRequest);
+	        else
+	        	items = shopItemRepository.findByCategory(category, pageableRequest);
+        }
         
         return items;
     }

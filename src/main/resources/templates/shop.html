@@ -13,11 +13,20 @@
 							<div class="side_bar_blog">
 								<h4>Keresés</h4>
 								<div class="side_bar_search">
-								<div class="input-group stylish-input-group">
-									<input class="form-control" placeholder="Keresés" type="text">
-									<span class="input-group-addon">
-									<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-									</span> </div>
+									<div class="input-group stylish-input-group">
+										<input class="form-control" id="search" placeholder="Keresés" th:value="${search}" type="text">
+										<span class="input-group-addon">
+										<button type="submit" id="searchBtn" onclick="window.location = '/shop/search/' + search.value;"><i class="fa fa-search" aria-hidden="true"></i></button>
+										</span>
+									</div>
+									<script>
+										document.getElementById("search").addEventListener("keyup", function(event) {
+											if (event.keyCode === 13) {
+												event.preventDefault();
+												document.getElementById("searchBtn").click();
+											}
+										});
+									</script>
 								</div>
 							</div>
 

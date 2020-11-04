@@ -14,4 +14,7 @@ import org.springframework.data.repository.query.Param;
 public interface ShopItemRepository extends PagingAndSortingRepository<ShopItem, Long>{
 	@Query("SELECT i from ShopItem i where i.category = :category")
 	Page<ShopItem> findByCategory(@Param("category") int category, Pageable pageable);
+	
+	@Query("SELECT i from ShopItem i where i.name like :name")
+	Page<ShopItem> findByPartialName(@Param("name") String name, Pageable pageable);
 }
