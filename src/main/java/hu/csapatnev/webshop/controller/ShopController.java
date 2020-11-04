@@ -30,7 +30,7 @@ public class ShopController {
 		}
 	}
 
-	@GetMapping(value = {"/items", "/items/**"})
+	@GetMapping(value = {"/shop", "/shop/**"})
 	public String getDefault(HttpServletRequest request, Model model) {
 		HashMap<String, String> args = Utils.parseUrlFromRequest(request);
 		int page;
