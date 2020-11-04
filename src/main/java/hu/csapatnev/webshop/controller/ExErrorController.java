@@ -17,6 +17,7 @@ public class ExErrorController implements ErrorController {
 	    
 		model.addAttribute("url", request.getRequestURL());
 		model.addAttribute("exception", ex);
+		model.addAttribute("current", "error");
 		
 	    if (status != null) {
 	        Integer statusCode = Integer.valueOf(status.toString());

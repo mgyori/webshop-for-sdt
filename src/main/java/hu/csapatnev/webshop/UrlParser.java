@@ -1,6 +1,7 @@
 package hu.csapatnev.webshop;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -38,5 +39,21 @@ public class UrlParser {
 	
 	public String getParamString(String key) {
 		return getParamString(key, "");
+	}
+	
+	public void setParam(String key, String value) {
+		this.map.put(key, value);
+	}
+	
+	public void removeParam(String key) {
+		if (this.map.containsKey(key))
+			this.map.remove(key);
+	}
+	
+	public String buildUrl() {
+		String url = "";
+		for(Entry<String, String> e : this.map.entrySet())
+			url += "/" + e.getKey() + "/" + e.getValue();
+		return url;
 	}
 }

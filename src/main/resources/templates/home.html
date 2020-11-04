@@ -35,10 +35,10 @@
 								<div id="navbar_menu">
 									<ul class="first-ul">
 										<li>
-											<a class="active" href="/home">Főoldal</a>
+											<a th:class="${current == 'home' ? 'active' : ''}" href="/home">Főoldal</a>
 										</li>
 										<li>
-											<a href="/shop">Tárgyak</a>
+											<a th:class="${current == 'shop' ? 'active' : ''}" href="/shop">Tárgyak</a>
 										</li>
 									</ul>
 								</div>

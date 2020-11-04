@@ -16,6 +16,7 @@ public class HomeController {
 	public String greeting(Model model) {
 		model.addAttribute("shopItems", shopItems.getBestOf(12));
 		
+		model.addAttribute("current", "home");
 		return "home";
 	}
 }

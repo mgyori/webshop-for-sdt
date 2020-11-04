@@ -25,7 +25,8 @@
 								<h4>Kategóriák</h4>
 								<div class="categary">
 									<ul>
-										<span th:each="cat: ${categories}"><a th:href="@{'/shop/category/' + ${cat.id}}"><li><i class="fa fa-angle-right"></i> <span th:text="${cat.name}"></span></li></a></span>
+										<a href="/shop"><li th:class="${0 == category ? 'active' : ''}"><i class="fa fa-angle-right"></i> Minden</li></a>
+										<span th:each="cat: ${categories}"><a th:href="@{'/shop/category/' + ${cat.id}}"><li th:class="${cat.id == category ? 'active' : ''}"><i class="fa fa-angle-right"></i> <span th:text="${cat.name}"></span></li></a></span>
 									</ul>
 								</div>
 							</div>
@@ -49,12 +50,13 @@
 								</a>
 							</div>
 							
-							<div class="center">
+							<div class="center" th:if="${maxPage > 0}">
 								<ul class="pagination">
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
+									<li th:if="${page > 1}"><a th:href="${'/shop' + url}"><<</a></li>
+									<li th:if="${page > 1}"><a th:href="${'/shop' + url + '/page/' + (page - 1)}"><</a></li>
+									<li th:each="pagi: ${pagination}"><a th:class="${pagi == page ? 'active' : ''}" th:href="@{'/shop' + ${url} + '/page/' + ${pagi}}" th:text="${pagi}"></a></li>
+									<li th:if="${page < maxPage}"><a th:href="${'/shop' + url + '/page/' + (page + 1)}">></a></li>
+									<li th:if="${page < maxPage}"><a th:href="${'/shop' + url + '/page/' + maxPage}">>></a></li>
 								</ul>
 							</div>
 						</div>

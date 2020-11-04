@@ -48,14 +48,11 @@ public class ShopItemService {
     	return dao.getBestOf(num).get();
     }
     
-    public List<ShopItem> getItems(int page, int limit, String sortBy, int category) {
+    public Page<ShopItem> getItems(int page, int limit, String sortBy, int category) {
         Pageable pageableRequest = PageRequest.of(page, limit, Sort.by(sortBy)); 
         Page<ShopItem> items = shopItemRepository.findAll(pageableRequest);
-        
-        if (items.hasContent())
-        	return items.getContent();
-        else
-        	return null;
+   
+        return items;
     }
     
     public ShopItem findByLink(String link) {

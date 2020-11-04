@@ -37,6 +37,7 @@ public class DetailsController {
 			
 			model.addAttribute("recommended", shopItems.getByCategory(item.getCategory(), 3));
 			
+			model.addAttribute("current", "details");
 			return "details";
 		}
 		
