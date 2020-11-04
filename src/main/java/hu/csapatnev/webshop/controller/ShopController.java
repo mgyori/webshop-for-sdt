@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import hu.csapatnev.webshop.UrlParser;
 import hu.csapatnev.webshop.Utils;
+import hu.csapatnev.webshop.jpa.service.ShopCategoryService;
 import hu.csapatnev.webshop.jpa.service.ShopItemService;
 
 @Controller
@@ -18,6 +20,9 @@ public class ShopController {
 
 	@Autowired
 	private ShopItemService shopItems;
+	
+	@Autowired
+	private ShopCategoryService shopCategories;
 
 	private String getValidSortOption(String sort) {
 		switch(sort) {
@@ -32,16 +37,13 @@ public class ShopController {
 
 	@GetMapping(value = {"/shop", "/shop/**"})
 	public String getDefault(HttpServletRequest request, Model model) {
-		HashMap<String, String> args = Utils.parseUrlFromRequest(request);
-		int page;
-		try {
-			page = args.containsKey("page") ? Integer.parseInt(args.get("page")) : 0;
-		} catch(Exception e ) {
-			page = 0;
-		}
-		String sort = getValidSortOption(args.containsKey("sort") ? args.get("sort") : "id");
+		UrlParser args = Utils.parseUrlFromRequest(request);
+		int page = args.getParamInt("page");
+		String sort = getValidSortOption(args.getParamString("sort", "id"));
+		int category = args.getParamInt("category");
 		
-		model.addAttribute("items", shopItems.getItems(page, limit, sort));
+		model.addAttribute("categories", shopCategories.findAll());
+		model.addAttribute("items", shopItems.getItems(page, limit, sort, category));
 		model.addAttribute("page", page);
 		model.addAttribute("sort", sort);
 		
