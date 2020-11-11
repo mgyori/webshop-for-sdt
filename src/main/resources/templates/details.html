@@ -34,7 +34,7 @@
 							<div class="col-xl-6 col-lg-12 col-md-12">
 								<div class="product_detail_feature_img hizoom hi2">
 									<div class="product_img">
-										<img class="img-responsive" th:src="@{'/assets/images/' + ${itemImage} + '.jpg'}" alt=""/>
+										<img class="img-responsive" th:src="@{'/assets/images/items/' + ${itemImage} + '.jpg'}" alt=""/>
 									</div>
 								</div>
 							</div>
@@ -101,7 +101,7 @@
 							<div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all" th:each="item: ${recommended}">
 								<a th:href="@{'/details/' + ${item.link}}">
 									<div class="product_list">
-										<div class="product_img"> <img class="img-responsive" th:src="@{'/assets/images/' + ${item.image} + '.jpg'}" alt=""> </div>
+										<div class="product_img"> <img class="img-responsive" th:src="@{'/assets/images/items/' + ${item.image} + '.jpg'}" alt=""> </div>
 										<div class="product_detail_btm">
 											<div class="center">
 												<h4 th:text="${item.name}"></h4>

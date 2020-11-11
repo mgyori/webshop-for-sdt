@@ -255,7 +255,7 @@
 					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all" th:each="item: ${shopItems}">
 						<a th:href="@{'/details/' + ${item.link}}">
 							<div class="product_list">
-								<div class="product_img"> <img class="img-responsive" th:src="@{'/assets/images/' + ${item.image} + '.jpg'}" alt=""> </div>
+								<div class="product_img"> <img class="img-responsive" th:src="@{'/assets/images/items/' + ${item.image} + '.jpg'}" alt=""> </div>
 								<div class="product_detail_btm">
 									<div class="center">
 										<h4 th:text="${item.name}"></h4>
