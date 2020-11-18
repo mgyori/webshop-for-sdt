@@ -272,6 +272,12 @@
 		</div>
 
 		<div th:fragment="footer">
+
+			
+			<div th:each="cart: ${cartItems}">
+				<img class="img-responsive" th:src="@{'/assets/images/items/' + ${cart.item.image} + '.jpg'}" height="32px" alt=""> <span th:text="${cart.count}"></span> darab <span th:text="${cart.item.name}"></span>
+			</div>
+
 			<footer class="footer_style_2">
 				<div>
 					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3808.9297321932386!2d21.639769267059105!3d47.5420941145914!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8426ebc782bcb06b!2sDebreceni%20Egyetem%20Informatikai%20Kar!5e0!3m2!1shu!2shu!4v1603377804546!5m2!1shu!2shu" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -298,7 +304,7 @@
 					autoplay: true,
 					autoplaySpeed: 2000
 				});
-			});
+		});
 		</script>
 	</body>
 </html>
