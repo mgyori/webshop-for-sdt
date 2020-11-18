@@ -36,6 +36,12 @@
 									<div class="product_img">
 										<img class="img-responsive" th:src="@{'/assets/images/items/' + ${itemImage} + '.jpg'}" alt=""/>
 									</div>
+									<div class="product_img">
+										<img class="img-responsive" th:src="@{'/assets/images/items/' + ${itemImage} + '.jpg'}" alt=""/>
+									</div>
+									<div class="product_img">
+										<img class="img-responsive" th:src="@{'/assets/images/items/' + ${itemImage} + '.jpg'}" alt=""/>
+									</div>
 								</div>
 							</div>
 							<div class="col-xl-6 col-lg-12 col-md-12 product_detail_side detail_style1">
@@ -120,5 +126,10 @@
 		</div>
 		
 		<div th:insert="home :: footer"></div>
+		<script>
+            $(document).ready(function(){
+                $('.product_detail_feature_img').slick();
+            });	
+        </script>
 	</body>
 </html>
