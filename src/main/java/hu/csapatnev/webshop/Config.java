@@ -34,6 +34,8 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import hu.csapatnev.webshop.paypal.PaypalClient;
+
 @EnableWebMvc
 @Configuration
 public class Config implements WebMvcConfigurer {
@@ -41,6 +43,7 @@ public class Config implements WebMvcConfigurer {
 			"classpath:/resources/", "classpath:/static/", "classpath:/public/" };
 
 	private Properties properties;
+	private static Config config;
 
 	@Autowired
 	private ServletContext servletContext;
@@ -48,6 +51,13 @@ public class Config implements WebMvcConfigurer {
 	@Autowired
 	private ApplicationContext appContext;
 
+	public Config() {
+		Properties prop = getProperties();
+		PaypalClient.initInstance(prop.getProperty("paypal.id"), prop.getProperty("paypal.secret"));
+		
+		config = this;
+	}
+	
 	@Bean
 	public ITemplateResolver templateResolver() {
 		ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
@@ -151,5 +161,11 @@ public class Config implements WebMvcConfigurer {
 		r.setDefaultErrorView("error");
 		r.setExceptionAttribute("ex");
 		return r;
+	}
+	
+	public static Config getInstance() {
+		if (config == null)
+			config = new Config();
+		return config;
 	}
 }

@@ -73,6 +73,16 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.5</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.paypal.sdk</groupId>
+		    <artifactId>checkout-sdk</artifactId>
+		    <version>1.0.2</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>

@@ -1,64 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<!-- basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- mobile metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<!-- site metas -->
-<title>Fizetési információk</title>
-<!-- site icons -->
-<link rel="icon" href="assets/images/icon.svg"/>
-<!-- bootstrap css -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-<!-- Site css -->
-<link rel="stylesheet" href="assets/css/style.css" />
-<!-- responsive css -->
-<link rel="stylesheet" href="assets/css/responsive.css" />
-<!-- colors css -->
-<link rel="stylesheet" href="assets/css/colors1.css" />
-<!-- wow Animation css -->
-<link rel="stylesheet" href="assets/css/animate.css" />
+	<html lang="hu">
+	<head th:insert="home :: head"></head>
+	<body id="default_theme" class="it_shop_detail">
+		<div class="bg_load" th:insert="home :: loading"></div>
+		<header id="default_header" class="header_style_1" th:insert="home :: menu"></header>
 
-<!--Slick css-->
-<link rel="stylesheet" type="text/css" href="assets/css/slick.css"/>
-<link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css"/>
-
-</head>
-<body id="default_theme" class="it_serv_shopping_cart it_checkout checkout_page">
-<!-- loader -->
-<div class="bg_load"> <img class="loader_animation" src="assets/images/icon.svg" alt="#" /> </div>
-<!-- end loader -->
-<!-- header -->
-<header id="default_header" class="header_style_1">
-  <!-- header bottom -->
-  <div class="header_bottom">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-          <!-- logo start -->
-          <div class="logo"> <a href="home.html"><img src="assets/images/icon.svg" alt="logo" /></a> </div>
-          <!-- logo end -->
-        </div>
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-          <!-- menu start -->
-          <div class="menu_side">
-            <div id="navbar_menu">
-              <ul class="first-ul">
-                <li> <a href="it_home.html">Home</a> </li>
-                <li> <a class="active" href="it_shop.html">Shop</a> </li>
-              </ul>
-            </div>
-          </div>
-          <!-- menu end -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- header bottom end -->
-</header>
+		<div id="inner_banner" class="section inner_banner_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="full">
+							<div class="title-holder">
+								<div class="title-holder-cell text-left">
+									<h1 class="page-title" th:text="${itemName}"></h1>
+									<ol class="breadcrumb">
+										<li><a href="/home">Főoldal</a></li>
+										<li><a href="/shop">Bolt</a></li>
+										<li class="active">Fizetés</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 <!-- end header -->
 <div class="section padding_layout_1 checkout_section">
   <div class="container">

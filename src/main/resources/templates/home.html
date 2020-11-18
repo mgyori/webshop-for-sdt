@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-		<title>Webshop</title>
+		<title th:text=${siteName}></title>
 		<link rel="icon" th:href="@{/assets/images/icon.svg}"/>
 		<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}" />
 		<link rel="stylesheet" th:href="@{/assets/css/style.css}" />
@@ -16,7 +16,7 @@
 		<link rel="stylesheet" type="text/css" th:href="@{/assets/css/slick.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/assets/css/slick-theme.css}" />
 
-		<base href="http://127.0.0.1:8080/">
+		<base th:href="${baseUrl}">
 	</head>
 	<body id="default_theme" class="it_service">
 		<div class="bg_load" th:fragment="loading">
