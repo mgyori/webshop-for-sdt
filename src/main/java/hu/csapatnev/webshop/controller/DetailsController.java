@@ -1,13 +1,20 @@
 package hu.csapatnev.webshop.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import hu.csapatnev.webshop.jpa.model.ShopItem;
 import hu.csapatnev.webshop.jpa.service.ShopItemService;
+import hu.csapatnev.webshop.session.CartItem;
 
 @Controller
 public class DetailsController {
@@ -41,5 +48,29 @@ public class DetailsController {
 			return "details";
 		}
 		
+	}
+	
+	@RequestMapping(value = "/details/{link}", method = RequestMethod.POST)
+	public String postDetails(HttpServletRequest request, @PathVariable String link, Model model) {
+		ShopItem item = shopItems.findByLink(link);
+		
+		if(link.isEmpty() || item == null) {
+			return "notfound";
+		}
+		
+		String count = request.getParameter("count");
+		if (count != null) {
+			@SuppressWarnings("unchecked")
+			List<CartItem> items = (List<CartItem>) request.getSession().getAttribute("cart");
+			
+			if (items == null)
+				items = new ArrayList<CartItem>();
+
+			items.add(new CartItem(item, Integer.parseInt(count)));
+			
+			request.getSession().setAttribute("cart", items);
+		}
+		
+		return getDetails(link, model);
 	}
 }

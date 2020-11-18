@@ -1,6 +1,8 @@
 package hu.csapatnev.webshop.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,7 @@ import hu.csapatnev.webshop.paypal.PaypalOrder;
 @Controller
 public class CheckoutController {
 	@RequestMapping(value = {"/checkout", "/checkout/cancel", "/checkout/return"})
-	public String checkoutCrt(HttpServletRequest request, Model model) {
+	public String checkoutCrt(HttpServletRequest request, HttpServletResponse resp, Model model) {
 		String path = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
 		String[] args = path.split("/");
 		
