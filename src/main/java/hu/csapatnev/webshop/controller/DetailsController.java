@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +43,7 @@ public class DetailsController {
 			model.addAttribute("itemPrice", item.getPrice());
 			model.addAttribute("itemShortDesc", item.getShortDescription());
 			model.addAttribute("itemDesc", item.getDescription());
+			model.addAttribute("itemId", item.getId());
 			
 			model.addAttribute("recommended", shopItems.getByCategory(item.getCategory(), 3));
 			
@@ -51,26 +54,38 @@ public class DetailsController {
 	}
 	
 	@RequestMapping(value = "/details/{link}", method = RequestMethod.POST)
-	public String postDetails(HttpServletRequest request, @PathVariable String link, Model model) {
+	public ResponseEntity<List<CartItem>> postDetails(HttpServletRequest request, @PathVariable String link, Model model) {
 		ShopItem item = shopItems.findByLink(link);
 		
-		if(link.isEmpty() || item == null) {
-			return "notfound";
-		}
+		if(link.isEmpty() || item == null)
+			return null;
+		
+		@SuppressWarnings("unchecked")
+		List<CartItem> items = (List<CartItem>) request.getSession().getAttribute("cart");
+		
+		if (items == null)
+			items = new ArrayList<CartItem>();
 		
 		String count = request.getParameter("count");
 		if (count != null) {
-			@SuppressWarnings("unchecked")
-			List<CartItem> items = (List<CartItem>) request.getSession().getAttribute("cart");
+			boolean isNew = true;
+			for (CartItem i : items) {
+				if (i.getItem().getId().equals(item.getId())) {
+					i.setCount(i.getCount() + Integer.parseInt(count));
+					model.addAttribute("addedMoreToCart", count);
+					isNew = false;
+					break;
+				}
+			}
 			
-			if (items == null)
-				items = new ArrayList<CartItem>();
-
-			items.add(new CartItem(item, Integer.parseInt(count)));
+			if (isNew) {
+				items.add(new CartItem(item, Integer.parseInt(count)));
+				model.addAttribute("addedToCart", count);
+			}
 			
 			request.getSession().setAttribute("cart", items);
 		}
 		
-		return getDetails(link, model);
+		return new ResponseEntity<List<CartItem>>(items, HttpStatus.OK);
 	}
 }

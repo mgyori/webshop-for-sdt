@@ -28,6 +28,20 @@
 
 		<div class="section padding_layout_1 product_detail">
 			<div class="container">
+				<div class="row" th:if="${addedToCart}">
+					<div class="col-sm-12">
+						<div class="alert alert-success">
+							Sikeresen hozzáadtál <span th:text="${addedToCart}"></span> darabot a kosaradba!
+						</div>
+					</div>
+				</div>
+				<div class="row" th:if="${addedMoreToCart}">
+					<div class="col-sm-12">
+						<div class="alert alert-success">
+							Sikeresen hozzáadtál még <span th:text="${addedMoreToCart}"></span> darabot a kosaradba!
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="row">
@@ -51,11 +65,11 @@
 										<br>
 										<span class="stock"><span th:text="${itemStock}"></span> darab raktáron</span>
 									</p>
-									<form class="cart" method="post">
+									<form id="addToCard" class="cart" method="post">
 										<div class="quantity">
 											<input step="1" min="1" max="5" name="count" value="1" title="Qty" class="input-text qty text" size="4" type="number">
 										</div>
-										<button type="submit" class="btn sqaure_bt">Kosárba rakás</button>
+										<button type="submit" class="btn sqaure_bt" th:attr="data-id=${itemId}">Kosárba rakás</button>
 									</form>
 								</div>
 								<div class="share-post">
@@ -122,3 +136,35 @@
 		<div th:insert="home :: footer"></div>
 	</body>
 </html>
+
+<script>
+	var waitForResponse = false;
+	$("#addToCard").submit(function(e) {
+		if (waitForResponse)
+			return;
+
+		var c = $(this).find("[name='count']").val();
+		var item = parseInt($(this).find("button").data("id"));
+		waitForResponse = true;
+
+		$.post(location.href, {count: c}, function(resp) {
+			waitForResponse = false;
+			var added = false;
+			if (resp) {
+				for (var k in resp) {
+					var data = resp[k];
+					if (data.item.id == item) {
+						added = true;
+						break;
+					}
+				}
+			}
+			if (added)
+				alert("Siker!");
+			else
+				alert("Valami hiba van...");
+		});
+		e.preventDefault();
+		return false;
+	});
+</script>
