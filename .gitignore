@@ -173,3 +173,5 @@ modules.xml
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,intellij+all,visualstudiocode
 
 target/
+
+src/*/resources/application.properties

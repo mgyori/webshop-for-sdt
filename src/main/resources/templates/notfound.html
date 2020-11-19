@@ -1,13 +1,20 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-    xmlns:th="http://www.thymeleaf.org" 
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-    <head>
-        <title>Item</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    </head>
-    <body>
-        <p>Not found...</p>
-    </body>
+<!DOCTYPE html>
+	<html lang="en">
+	<head th:insert="home :: head"></head>
+	<body id="default_theme" class="it_shop_detail">
+		<div class="bg_load" th:insert="home :: loading"></div>
+		<header id="default_header" class="header_style_1" th:insert="home :: menu"></header>
+
+		<div class="section padding_layout_1 product_detail">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<h4>A megadott tárgy nem található...</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div th:insert="home :: footer"></div>
+	</body>
 </html>

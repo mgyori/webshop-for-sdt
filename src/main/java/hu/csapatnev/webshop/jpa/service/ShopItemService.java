@@ -1,6 +1,8 @@
 package hu.csapatnev.webshop.jpa.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -46,13 +48,33 @@ public class ShopItemService {
     	return dao.getBestOf(num).get();
     }
     
-    public List<ShopItem> getItems(int page, int limit, String sortBy) {
+    public Page<ShopItem> getItems(int page, int limit, String sortBy, int category, String name) {
         Pageable pageableRequest = PageRequest.of(page, limit, Sort.by(sortBy)); 
-        Page<ShopItem> items = shopItemRepository.findAll(pageableRequest);
+        Page<ShopItem> items;
         
-        if (items.hasContent())
-        	return items.getContent();
-        else
-        	return null;
+        if (!name.isEmpty()) {
+        	items = shopItemRepository.findByPartialName("%" + name + "%", pageableRequest);
+        } else {
+	        if (category == 0)
+	        	items = shopItemRepository.findAll(pageableRequest);
+	        else
+	        	items = shopItemRepository.findByCategory(category, pageableRequest);
+        }
+        
+        return items;
+    }
+    
+    public ShopItem findByLink(String link) {
+    	Optional<ShopItem> o = dao.findByLink(link);
+    	if (o.isPresent())
+    		return o.get();
+    	return null;
+    }
+    
+    public List<ShopItem> getByCategory(int category, int max) {
+    	Optional<List<ShopItem>> o = dao.getByCategory(category, max);
+    	if (o.isPresent())
+    		return o.get();
+    	return new ArrayList<>();
     }
 }
