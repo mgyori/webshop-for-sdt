@@ -9,6 +9,7 @@
 		<link rel="icon" th:href="@{/assets/images/icon.svg}"/>
 		<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}" />
 		<link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+		<link rel="stylesheet" th:href="@{/assets/css/cart.css}" />
 		<link rel="stylesheet" th:href="@{/assets/css/responsive.css}" />
 		<link rel="stylesheet" th:href="@{/assets/css/colors1.css}" />
 		<link rel="stylesheet" th:href="@{/assets/css/animate.css}" />
@@ -40,12 +41,16 @@
 										<li>
 											<a th:class="${current == 'shop' ? 'active' : ''}" href="/shop">Tárgyak</a>
 										</li>
+										<li class="cartnav" th:if="${#lists.size(cartItems) > 0}"><a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Kosár <span class="badge" th:text="${#lists.size(cartItems)}"></span></a></li>
 									</ul>
+									</div>
+									
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+					
 			</div>
 		</header>
 
@@ -273,10 +278,26 @@
 
 		<div th:fragment="footer">
 
+			<div class="shopping-cart">
+				<div class="shopping-cart-header">
+				  <i class="fa fa-shopping-cart cart-icon"></i><span class="badge" th:text="${#lists.size(cartItems)}"></span>
+				  <div class="shopping-cart-total">
+					<span class="lighter-text">Összesen:</span>
+					<span class="main-color-text"><span th:text="${cartPrice}"></span> FT</span>
+				  </div>
+				</div> <!--end shopping-cart-header -->
 			
-			<div th:each="cart: ${cartItems}">
-				<img class="img-responsive" th:src="@{'/assets/images/items/' + ${cart.item.image} + '.jpg'}" height="32px" alt=""> <span th:text="${cart.count}"></span> darab <span th:text="${cart.item.name}"></span>
-			</div>
+				<ul class="shopping-cart-items" th:each="cart: ${cartItems}">
+				  <li class="clearfix">
+					  <img class="img-responsive" th:src="@{'/assets/images/items/' + ${cart.item.image} + '.jpg'}" height="70px" width="70px" alt="">
+					<span class="item-name" th:text="${cart.item.name}"></span>
+					<span class="item-price"><span th:text ="${cart.item.price}"></span> Ft</span>
+					<span class="item-quantity">x</span><span class="item-quantity" th:text="${cart.count}"></span>
+				  </li>
+				</ul>
+			
+				<a class="bbutton" href="/checkout">Fizetés</a>
+			</div> <!--end shopping-cart -->
 
 			<footer class="footer_style_2">
 				<div>

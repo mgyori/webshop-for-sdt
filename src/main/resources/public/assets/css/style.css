@@ -61,13 +61,6 @@
 		3. BASIC
 	-------------------------------------------------------------------*/
 
-* {
-	margin: 0;
-	padding: 0;
-	outline: none !important;
-	box-sizing: border-box;
-}
-
 html,
 body {
 	color: #898989;
@@ -4801,3 +4794,4 @@ footer ul.social_icons {
 .product_detail_side.detail_style1 {
 	margin-top: 35px;
 }
+

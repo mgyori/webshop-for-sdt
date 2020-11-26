@@ -27,4 +27,13 @@ public class GlobalController {
 	public List<CartItem> cartItems(HttpServletRequest request) {
 		return Utils.getCartItems(request);
 	}
+	
+	@ModelAttribute("cartPrice")
+	public int cartPrice(HttpServletRequest request) {
+		List<CartItem> cart = Utils.getCartItems(request);
+		int price = 0;
+		for (CartItem c : cart)
+			price += c.getCount() * c.getItem().getPrice();
+		return price;
+	}
 }
