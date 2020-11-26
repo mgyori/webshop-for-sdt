@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.data.domain.Page;
 
+import hu.csapatnev.webshop.session.CartItem;
+
 public class Utils {
 	public static UrlParser parseUrlFromRequest(HttpServletRequest request) {
 		return new UrlParser(request);
@@ -37,5 +39,13 @@ public class Utils {
 			pagination.add(i + start + 1);
 	
 		return pagination;
+	}
+	
+	public static List<CartItem> getCartItems(HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<CartItem> items = (List<CartItem>) request.getSession().getAttribute("cart");
+		if (items == null)
+			items = new ArrayList<CartItem>();
+		return items;
 	}
 }
