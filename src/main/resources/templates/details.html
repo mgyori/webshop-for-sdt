@@ -73,7 +73,7 @@
 									</p>
 									<form id="addToCard" class="cart" method="post">
 										<div class="quantity">
-											<input step="1" min="1" max="5" name="count" value="1" title="Qty" class="input-text qty text" size="4" type="number">
+											<input step="1" min="1" th:max=${itemStock} name="count" value="1" title="Qty" class="input-text qty text" size="4" type="number">
 										</div>
 										<button type="submit" class="btn sqaure_bt" th:attr="data-id=${itemId}">Kosárba rakás</button>
 									</form>
