@@ -197,6 +197,12 @@ a,
 	transition: all .3s ease-in-out;
 }
 
+.btn-primary-outline {
+	border: 1px solid #ced4da;
+}
+
+
+
 .btn-custom {
 	margin-top: 20px;
 	background-color: transparent;
@@ -252,6 +258,28 @@ a.btn.white_btn {
 	background: #fff;
 	padding: 0 50px;
 }
+
+label.btn.btn-primary-outline {
+	margin-right: 20px;
+}
+
+label.btn.btn-primary-outline.active{
+	background-color: #ced4da;
+}
+ .ship{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.form-check {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.ship {
+	display: none;
+}
+
 
 .btn.sqaure_bt i {
 	margin-left: 8px;
@@ -4333,12 +4361,20 @@ span.skill {
 	text-align: center;
 	height: 48px;
 	border-radius: 5px;
-	line-height: 50px;
+	align-content: center;
 	font-weight: 500;
 	border: none;
-	padding: 0 35px;
 	cursor: pointer;
 	background: #039ee3;
+	transition-duration: 0.4s;
+	border: 2px solid #039EE3;
+}
+
+.bt_main:hover {
+	background-color: #fff;
+	color: #039EE3;
+	box-shadow: 0 6px 8px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	transition-duration: 0.4s;
 }
 
 .btn-login .bt_main {

@@ -31,86 +31,66 @@
     <div class="row">
       <div class="col-md-8">
         <div class="checkout-form">
-          <form action="#">
-            <fieldset>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-field">
-                  <label>Keresztnév <span class="red">*</span></label>
-                  <input name="fn" type="text">
+          <form>
+            <h2>Számlázási adatok</h2>
+            <div class="form-row col-md-12">
+                <div class="form-group col-md-6">
+                  <label>Vezetéknév</label>
+                  <input type="text" class="form-control" placeholder="Vezetéknév">
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-field">
-                  <label>Vezetéknév <span class="red">*</span></label>
-                  <input name="ln" type="text">
+                <div class="form-group col-md-6">
+                  <label>Keresztnév</label>
+                  <input type="text" class="form-control" placeholder="Keresztnév">
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-field">
-                  <label>Cég neve</label>
-                  <input name="cm" type="text">
+            </div>
+            <div class="form-group col-md-8">
+              <label for="inputAddress">Számlázási cím</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="4028 Debrecen, Kassai út 28.">
+            </div>
+            <div class="form-check col-md-8">
+              <input type="checkbox" class="form-check-input">
+              <label >A szállítási cím a számlázási címtől eltér</label>
+            </div>
+            
+            <div class="ship">
+              <h2>Szállítási adatok</h2>
+            <div class="form-row col-md-12">
+                <div class="form-group col-md-6">
+                  <label>Vezetéknév</label>
+                  <input type="text" class="form-control" placeholder="Vezetéknév">
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-field">
-                  <label>Ország</label>
-                  <!-- language-selection -->
-                      <script>
-                        $(document).ready(function () {
-                            $.getJSON("assets/json/countries.json", function (result) {
-                                $.each(result.countries, function (i, country) {
-                                    $("#langSelect").append('<option value="' + country.countryID + '">' + country.countryName + '</option>&apos');
-                                });
-                            });
-                        });
-                    </script>
-                    <select id="langSelect" ></select>
+                <div class="form-group col-md-6">
+                  <label>Keresztnév</label>
+                  <input type="text" class="form-control" placeholder="Keresztnév">
                 </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-field">
-                  <label>Cím <span class="red">*</span></label>
-                  <textarea name="ad"></textarea>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-field">
-                  <label>Város / Település <span class="red">*</span></label>
-                  <input name="tc" type="text">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-field">
-                  <label>Megye / Állam <span class="red">*</span></label>
-                  <input name="sc" type="text">
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-field">
-                  <label>Irányítószám <span class="red">*</span></label>
-                  <input name="pz" type="text">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-field">
-                  <label>Telefonszám (mobil) <span class="red">*</span></label>
-                  <input name="ph" type="text">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-field">
-                  <label>E-mail cím <span class="red">*</span></label>
-                  <input name="em" type="email">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-field">
-                  <input name="ck" type="checkbox">
-                  <span class="crte-ac">Szeretnék regisztrálni</span> </div>
+            </div>
+            <div class="form-group col-md-8">
+              <label for="inputAddress">Szállítási cím</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="4028 Debrecen, Kassai út 28.">
+            </div>
+          </div>
+            <div class="form-group col-md-8">
+              <label>E-mail cím</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="valami@example.com">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Telefonszám</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="+36 30 123 4567">
+            </div>
+            <div class="form-group col-md-8">
+              <label>Fizetési mód</label>
+              <div class="btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-primary-outline">
+                  <input type="radio" autocomplete="off"> <img src="/assets/images/mc.png" width="70" alt="Bankkártya">
+                </label>
+                <label class="btn btn-primary-outline">
+                  <input type="radio"  autocomplete="off"> <img src="/assets/images/pp.png" width="70" alt="PayPal">
+                </label>
+                <label class="btn btn-primary-outline">
+                  <input type="radio"  autocomplete="off"> <img src="/assets/images/uv.png" width="70" alt="Utánvét">
+                </label>
               </div>
             </div>
-            </fieldset>
           </form>
         </div>
       </div>
@@ -123,16 +103,16 @@
                 <td class="text-right"></td>
               </tr>
               <tr>
-                <td><h4>Részösszeg</h4></td>
-                <td class="text-right"><h4>$42.00</h4></td>
+                <td><h3>Részösszeg</h3></td>
+                <td class="text-right"><h4> </h4><h4> Ft</h4></td>
               </tr>
               <tr>
-                <td><h5>Szállítási költség</h5></td>
-                <td class="text-right"><h4>$6.00</h4></td>
+                <td><h3>Szállítás</h3></td>
+                <td class="text-right"><h4> Ft</h4></td>
               </tr>
               <tr>
                 <td><h3>Összesen</h3></td>
-                <td class="text-right"><h4>$48.00</h4></td>
+                <td class="text-right"><h4> Ft</h4></td>
               </tr>
             </tbody>
           </table>
@@ -145,123 +125,10 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-12">
-        <div class="payment-form">
-          <div class="col-xs-12 col-md-12">
-            <!-- CREDIT CARD FORM STARTS HERE -->
-            <div class="panel panel-default credit-card-box">
-              <div class="panel-heading display-table">
-                <div class="display-tr">
-                  <h3 class="panel-title display-td">Fizetési részletek</h3>
-                  <div class="display-td"> <img class="img-responsive pull-right" src="images/it_service/accepted.png" alt="#"> </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <form id="payment-form" method="POST" action="index.html">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-field">
-                        <label>Kártyaszám</label>
-                        <div class="form-field cardNumber">
-                          <input name="cardNumber" placeholder="Érvényes bankkártyaszám" required="" type="tel">
-                          <span class="input-group-addon"><i class="fa fa-credit-card"></i></span> </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-12 col-md-7">
-                      <div class="form-field">
-                        <label><span class="hidden-xs">Lejárati dátum</span><span class="visible-xs-inline">(EXP</span> Date)</label>
-                        <input name="cardExpiry" placeholder="hónap / év" required="" type="tel">
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-md-5 pull-right">
-                      <div class="form-field">
-                        <label>CV kód</label>
-                        <input name="cardCVC" placeholder="CVC" required="" type="tel">
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <!-- CREDIT CARD FORM ENDS HERE -->
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
-<!-- footer -->
-<footer class="footer_style_2">
-  <div class="container-fuild">
-    <div class="row">
-      <div class="map_section">
-        <div id="map"></div>
-      </div>
-      <div class="footer_blog">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="main-heading left_text">
-              <h2>It Next Theme</h2>
-            </div>
-            <p>Tincidunt elit magnis nulla facilisis. Dolor sagittis maecenas. Sapien nunc amet ultrices, dolores sit ipsum velit purus aliquet, massa fringilla leo orci.</p>
-            <ul class="social_icons">
-              <li class="social-icon fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li class="social-icon tw"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li class="social-icon gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <div class="main-heading left_text">
-              <h2>Additional links</h2>
-            </div>
-            <ul class="footer-menu">
-              <li><a href="it_about.html"><i class="fa fa-angle-right"></i> About us</a></li>
-              <li><a href="it_term_condition.html"><i class="fa fa-angle-right"></i> Terms and conditions</a></li>
-              <li><a href="it_privacy_policy.html"><i class="fa fa-angle-right"></i> Privacy policy</a></li>
-              <li><a href="it_news.html"><i class="fa fa-angle-right"></i> News</a></li>
-              <li><a href="it_contact.html"><i class="fa fa-angle-right"></i> Contact us</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <div class="main-heading left_text">
-              <h2>Services</h2>
-            </div>
-            <ul class="footer-menu">
-              <li><a href="it_data_recovery.html"><i class="fa fa-angle-right"></i> Data recovery</a></li>
-              <li><a href="it_computer_repair.html"><i class="fa fa-angle-right"></i> Computer repair</a></li>
-              <li><a href="it_mobile_service.html"><i class="fa fa-angle-right"></i> Mobile service</a></li>
-              <li><a href="it_network_solution.html"><i class="fa fa-angle-right"></i> Network solutions</a></li>
-              <li><a href="it_techn_support.html"><i class="fa fa-angle-right"></i> Technical support</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <div class="main-heading left_text">
-              <h2>Contact us</h2>
-            </div>
-            <p>123 Second Street Fifth Avenue,<br>
-              Manhattan, New York<br>
-              <span style="font-size:18px;"><a href="tel:+9876543210">+987 654 3210</a></span></p>
-            <div class="footer_mail-section">
-              <form>
-                <fieldset>
-                <div class="field">
-                  <input placeholder="Email" type="text">
-                  <button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
-                </div>
-                </fieldset>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="cprt">
-        <p>ItNext © Copyrights 2019 Design by html.design</p>
-      </div>
-    </div>
-  </div>
-</footer>
+<div th:insert="home :: footer"></div>
 <!-- end footer -->
 <!-- js section -->
 <script src="assets/js/jquery.min.js"></script>
@@ -273,20 +140,17 @@
 <script src="assets/js/wow.js"></script>
 <!-- custom js -->
 <script src="assets/js/custom.js"></script>
-
-
 <script>
-  $(document).ready(function(){
-  $('.slide').slick({
-    dots:true,
-    slidesToShow: 4,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000
+$(document).ready(function(){
+    $(".form-check-input").on("change", function() {
+    if ($(".form-check-input").is(":checked")) {
+      $('.ship').fadeIn();
+    } else {
+      $('.ship').fadeOut();
+    }
   });
-
-  $('.new_price').html()
 });
+
 </script>
 </body>
 </html>
