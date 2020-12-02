@@ -29,6 +29,7 @@ public class CartItemConverter implements AttributeConverter<List<CartItem>, Str
 		
 		String[] args = dbData.split(SPLIT_CHAR);
 		for (String data : args) {
+			System.out.println(data);
 			String[] s_args = data.split(":");
 			try {
 				list.add(new CartItem(shopItems.findOne(Integer.parseInt(s_args[0])), Integer.parseInt(s_args[1])));

@@ -41,7 +41,7 @@
 										<li>
 											<a th:class="${current == 'shop' ? 'active' : ''}" href="/shop">Tárgyak</a>
 										</li>
-										<li class="cartnav" th:if="${#lists.size(cartItems) > 0}"><a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Kosár <span class="badge" th:text="${#lists.size(cartItems)}"></span></a></li>
+										<li th:class="@{'cartnav ' + ${cartCount > 0 ? 'show' : 'hidden'}}"><a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Kosár <span class="badge cartCount" th:text="${cartCount}"></span></a></li>
 									</ul>
 									</div>
 									
@@ -280,20 +280,25 @@
 
 			<div class="shopping-cart">
 				<div class="shopping-cart-header">
-				  <i class="fa fa-shopping-cart cart-icon"></i><span class="badge" th:text="${#lists.size(cartItems)}"></span>
+				  <i class="fa fa-shopping-cart cart-icon"></i><span class="badge cartCount" th:text="${cartCount}"></span>
 				  <div class="shopping-cart-total">
 					<span class="lighter-text">Összesen:</span>
-					<span class="main-color-text"><span th:text="${cartPrice}"></span> FT</span>
+					<span class="main-color-text"><span class="cartPrice" th:text="${cartPrice}"></span> FT</span>
 				  </div>
 				</div> <!--end shopping-cart-header -->
 			
 				<ul class="shopping-cart-items" th:each="cart: ${cartItems}">
-				  <li class="clearfix">
-					  <img class="img-responsive" th:src="@{'/assets/images/items/' + ${cart.item.image} + '.jpg'}" height="70px" width="70px" alt="">
-					<span class="item-name" th:text="${cart.item.name}"></span>
-					<span class="item-price"><span th:text ="${cart.item.price}"></span> Ft</span>
-					<span class="item-quantity">x</span><span class="item-quantity" th:text="${cart.count}"></span>
-				  </li>
+					<li class="clearfix">
+						<table>
+							<td><img class="img-responsive" th:src="@{'/assets/images/items/' + ${cart.item.image} + '.jpg'}" height="70px" width="70px" alt=""></td>
+							<td>
+								<span class="item-name" th:text="${cart.item.name}"></span><br>
+								<span class="item-price"><span th:text ="${cart.item.price}"></span> Ft</span>
+								<span class="item-quantity">x<span th:text="${cart.count}"></span></span>
+								<span th:data-remove="${cart.item.id}" class="item-delete"><i class="fa fa-trash"></i></span>
+							</td>
+						</table>
+					</li>
 				</ul>
 			
 				<a class="bbutton" href="/checkout">Fizetés</a>
@@ -301,55 +306,67 @@
 
 			<footer class="footer_style_2">
 				<div class="container-fuild">
-				  <div class="row">
-					<div class="footer_blog">
-					  <div class="row">
-						<div class="column">
-						  <div class="main-heading left_text">
-							<h2>Közösségi média</h2>
-						  </div>
-						  <ul class="social_icons">
-							<li class="social-icon fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li class="social-icon tw"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li class="social-icon gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-						  </ul>
+					<div class="row">
+						<div class="footer_blog container">
+							<div class="row">
+								<div class="col-sm-12 col-md-4">
+									<div class="main-heading left_text">
+										<h2>Közösségi média</h2>
+									</div>
+									<ul class="social_icons">
+										<li class="social-icon fb">
+											<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+										</li>
+										<li class="social-icon tw">
+											<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+										</li>
+										<li class="social-icon gp">
+											<a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<div class="main-heading left_text">
+										<h2>TOVÁBBI LINKEK</h2>
+									</div>
+									<ul class="footer-menu">
+										<li>
+											<a href="/home"><i class="fa fa-angle-right"></i> Főoldal</a>
+										</li>
+										<li>
+											<a href="/shop"><i class="fa fa-angle-right"></i> Tárgyak</a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<div class="main-heading left_text">
+										<h2>Vedd fel velünk a kapcsolatot</h2>
+									</div>
+									<p>
+										Egyetem tér 83,<br />
+										Debrecen<br />
+										E-mail: webshop@info.hu<br />
+										<span style="font-size: 18px;"><a href="#">+3630715643</a></span>
+									</p>
+									<div class="footer_mail-section">
+										<form>
+											<fieldset>
+												<div class="field">
+													<input placeholder="Email" type="text" />
+													<button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+												</div>
+											</fieldset>
+										</form>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="column">
-						  <div class="main-heading left_text">
-							<h2>TOVÁBBI LINKEK</h2>
-						  </div>
-						  <ul class="footer-menu">
-							<li><a href="/home"><i class="fa fa-angle-right"></i> Főoldal</a></li>
-							<li><a href="/shop"><i class="fa fa-angle-right"></i> Tárgyak</a></li>
-						  </ul>
+						<div class="cprt">
+							<p>Webshop © Copyrights 2020</p>
 						</div>
-						<div class="column">
-						  <div class="main-heading left_text">
-							<h2>Vedd fel velünk a kapcsolatot</h2>
-						  </div>
-						  <p>Egyetem tér 83,<br>
-							Debrecen<br>
-							E-mail: webshop@info.hu<br>
-							<span style="font-size:18px;"><a href="#">+3630715643</a></span></p>
-						  <div class="footer_mail-section">
-							<form>
-							  <fieldset>
-							  <div class="field">
-								<input placeholder="Email" type="text">
-								<button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
-							  </div>
-							  </fieldset>
-							</form>
-						  </div>
-						</div>
-					  </div>
 					</div>
-					<div class="cprt">
-					  <p> Webshop © Copyrights 2020</p>
-					</div>
-				  </div>
 				</div>
-			  </footer>
+			</footer>			
 
 			<script src="/assets/js/jquery.min.js"></script>
 			<script src="/assets/js/slick.min.js"></script>

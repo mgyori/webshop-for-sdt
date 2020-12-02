@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import hu.csapatnev.webshop.Utils;
 import hu.csapatnev.webshop.jpa.model.ShopItem;
 import hu.csapatnev.webshop.jpa.service.ShopItemService;
 import hu.csapatnev.webshop.session.CartItem;
@@ -60,11 +61,7 @@ public class DetailsController {
 		if(link.isEmpty() || item == null)
 			return null;
 		
-		@SuppressWarnings("unchecked")
-		List<CartItem> items = (List<CartItem>) request.getSession().getAttribute("cart");
-		
-		if (items == null)
-			items = new ArrayList<CartItem>();
+		List<CartItem> items = Utils.getCartItems(request);
 		
 		String count = request.getParameter("count");
 		if (count != null) {
@@ -87,5 +84,20 @@ public class DetailsController {
 		}
 		
 		return new ResponseEntity<List<CartItem>>(items, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/removeCartItem/{id}", method = RequestMethod.POST)
+	public ResponseEntity<List<CartItem>> removeItemFromCart(HttpServletRequest request, @PathVariable Long id, Model model) {
+		List<CartItem> cart = Utils.getCartItems(request);
+		if (cart.size() == 1)
+			cart.clear();
+		else
+			for (CartItem c : cart)
+				if (c.getItem().getId().equals(id))
+					cart.remove(c);
+		if (cart == null || cart.size() == 0)
+			cart = new ArrayList<CartItem>();
+		request.getSession().setAttribute("cart", cart);
+		return new ResponseEntity<List<CartItem>>(cart, HttpStatus.OK);
 	}
 }

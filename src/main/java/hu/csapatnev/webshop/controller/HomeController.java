@@ -17,6 +17,7 @@ public class HomeController {
 		model.addAttribute("shopItems", shopItems.getBestOf(12));
 		
 		model.addAttribute("current", "home");
+		
 		return "home";
 	}
 }

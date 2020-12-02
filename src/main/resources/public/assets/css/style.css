@@ -3327,11 +3327,7 @@ span.skill {
 	}
 	
 	.footer_blog {
-		float: left; 
-		width: 100%;
 		padding: 75px 75px 100px 75px;
-		margin-left: 200px;	
-		
 	}
 	
 	footer h2 {
@@ -3417,7 +3413,7 @@ span.skill {
 		font-size: 14px;
 		font-weight: 500;
 		max-width: 215px;
-		width: 100%;
+		/* width: 100%; */
 	}
 	
 	.footer_mail-section .field button.button_custom {
@@ -3426,8 +3422,8 @@ span.skill {
 		font-size: 14px;
 		padding: 8px 8px;
 		border: none;
-		float: left;
 		color: #eee;
+		float: right;
 	}
 	
 	.footer_mail-section .field {
@@ -3436,14 +3432,13 @@ span.skill {
 	
 	.cprt {
 		width: 100%;
-		text-align: left;
+		text-align: center;
 		position: absolute;
 		bottom: 0;
 		float: left;
 		height: auto;
 		left: 0;
 		padding: 18px 0;
-		padding-left: 35%;
 	}
 	
 	.cprt p {
@@ -4067,7 +4062,7 @@ span.skill {
 }
 
 .shopping-cart table tbody tr td {
-	padding: 25px 0;
+	padding: 5px 0;
 }
 
 .shopping-cart #Quantity1,

@@ -52,7 +52,7 @@ public class PaypalOrder {
 		return order;
 	}
 
-	public static boolean processOrder(String id) {
+	public static Order processOrder(String id) {
 		Order order = null;
 		try {
 			OrdersCaptureRequest request = new OrdersCaptureRequest(id);
@@ -60,8 +60,8 @@ public class PaypalOrder {
 			try {
 				HttpResponse<Order> response = PaypalClient.getInstance().client().execute(request);
 				order = response.result();
-				System.out.println(order.status());
-				return order.status().equals("COMPLETED");
+				//System.out.println(order.status());
+				return order;
 			} catch (IOException ioe) {
 				if (ioe instanceof HttpException) {
 					HttpException he = (HttpException) ioe;
@@ -74,7 +74,7 @@ public class PaypalOrder {
 		} catch (Exception e) {
 
 		}
-		return false;
+		return null;
 	}
 
 }

@@ -46,19 +46,10 @@
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-xl-6 col-lg-12 col-md-12">
-								<div class="product_detail_feature_img hizoom hi2">
-									<div class="product_img">
-										<img class="img-responsive" th:src="@{'/assets/images/items/' + ${itemImage} + '.jpg'}" alt=""/>
-									</div>
-									<div class="product_img">
-										<img class="img-responsive" th:src="@{'/assets/images/items/' + ${itemImage} + '.jpg'}" alt=""/>
-									</div>
-									<div class="product_img">
-										<img class="img-responsive" th:src="@{'/assets/images/items/' + ${itemImage} + '.jpg'}" alt=""/>
-									</div>
+								<div class="product_detail_feature_img hizoom hi2" th:data-id="${itemId}">
 								</div>
 							</div>
-							<div class="col-xl-6 col-lg-12 col-md-12 product_detail_side detail_style1">
+							<div class="col-offset-xl-1 col-xl-5 col-lg-12 col-md-12 product_detail_side detail_style1">
 								<div class="product-heading">
 									<h2 th:text="${itemName}"></h2>
 								</div>
@@ -140,42 +131,5 @@
 		</div>
 		
 		<div th:insert="home :: footer"></div>
-		<script>
-            $(document).ready(function(){
-                $('.product_detail_feature_img').slick();
-            });	
-        </script>
 	</body>
 </html>
-
-<script>
-	var waitForResponse = false;
-	$("#addToCard").submit(function(e) {
-		if (waitForResponse)
-			return;
-
-		var c = $(this).find("[name='count']").val();
-		var item = parseInt($(this).find("button").data("id"));
-		waitForResponse = true;
-
-		$.post(location.href, {count: c}, function(resp) {
-			waitForResponse = false;
-			var added = false;
-			if (resp) {
-				for (var k in resp) {
-					var data = resp[k];
-					if (data.item.id == item) {
-						added = true;
-						break;
-					}
-				}
-			}
-			if (added)
-				alert("Siker!");
-			else
-				alert("Valami hiba van...");
-		});
-		e.preventDefault();
-		return false;
-	});
-</script>
