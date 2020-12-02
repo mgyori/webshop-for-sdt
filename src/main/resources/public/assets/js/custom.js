@@ -16,7 +16,8 @@ $(window).load(function() {
       e.preventDefault();
       return false;
     });
-})
+
+});
 
 /**== Menu js ==**/
 
