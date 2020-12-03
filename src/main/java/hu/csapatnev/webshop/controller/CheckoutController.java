@@ -77,12 +77,15 @@ public class CheckoutController {
 					System.out.println("Level elkuldve");
 					System.out.println(sb.toString());
 					
+					
+					//request.getSession().setAttribute("cart", null);
+					
 					try {
 						Order ord = PaypalOrder.processOrder(token);
 						if (ord != null) {
 							if (ord.status().equalsIgnoreCase("completed")) {
 								model.addAttribute("state", true);
-								orders.setPaid(det, true);
+								//orders.setPaid(det, true);
 								System.out.println("megy ez");
 							} else {
 								model.addAttribute("state", false);
@@ -123,8 +126,8 @@ public class CheckoutController {
 		
 		Order order = PaypalOrder.newOrder(price);
 		
-		details.setFirstName(request.getParameter("firstName"));
-		details.setLastName(request.getParameter("lastName"));
+		details.setFirstName(Utils.toUTF8(request.getParameter("firstName")));
+		details.setLastName(Utils.toUTF8(request.getParameter("lastName")));
 		details.setAddress(request.getParameter("address"));
 		
 		details.setShip_firstName(request.getParameter("ship_firstName"));

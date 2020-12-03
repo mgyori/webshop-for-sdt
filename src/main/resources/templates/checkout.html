@@ -25,132 +25,100 @@
 				</div>
 			</div>
 		</div>
-<!-- end header -->
-<div class="section padding_layout_1 checkout_section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="checkout-form">
-          <form>
-            <h2>Számlázási adatok</h2>
-            <div class="form-row col-md-12">
-                <div class="form-group col-md-6">
-                  <label>Vezetéknév</label>
-                  <input type="text" class="form-control" placeholder="Vezetéknév">
-                </div>
-                <div class="form-group col-md-6">
-                  <label>Keresztnév</label>
-                  <input type="text" class="form-control" placeholder="Keresztnév">
-                </div>
-            </div>
-            <div class="form-group col-md-8">
-              <label for="inputAddress">Számlázási cím</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="4028 Debrecen, Kassai út 28.">
-            </div>
-            <div class="form-check col-md-8">
-              <input type="checkbox" class="form-check-input">
-              <label >A szállítási cím a számlázási címtől eltér</label>
-            </div>
-            
-            <div class="ship">
-              <h2>Szállítási adatok</h2>
-            <div class="form-row col-md-12">
-                <div class="form-group col-md-6">
-                  <label>Vezetéknév</label>
-                  <input type="text" class="form-control" placeholder="Vezetéknév">
-                </div>
-                <div class="form-group col-md-6">
-                  <label>Keresztnév</label>
-                  <input type="text" class="form-control" placeholder="Keresztnév">
-                </div>
-            </div>
-            <div class="form-group col-md-8">
-              <label for="inputAddress">Szállítási cím</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="4028 Debrecen, Kassai út 28.">
-            </div>
-          </div>
-            <div class="form-group col-md-8">
-              <label>E-mail cím</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="valami@example.com">
-            </div>
-            <div class="form-group col-md-6">
-              <label>Telefonszám</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="+36 30 123 4567">
-            </div>
-            <div class="form-group col-md-8">
-              <label>Fizetési mód</label>
-              <div class="btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-primary-outline">
-                  <input type="radio" autocomplete="off"> <img src="/assets/images/mc.png" width="70" alt="Bankkártya">
-                </label>
-                <label class="btn btn-primary-outline">
-                  <input type="radio"  autocomplete="off"> <img src="/assets/images/pp.png" width="70" alt="PayPal">
-                </label>
-                <label class="btn btn-primary-outline">
-                  <input type="radio"  autocomplete="off"> <img src="/assets/images/uv.png" width="70" alt="Utánvét">
-                </label>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="shopping-cart-cart">
-          <table>
-            <tbody>
-              <tr class="head-table">
-                <td><h5>Kosár</h5></td>
-                <td class="text-right"></td>
-              </tr>
-              <tr>
-                <td><h3>Részösszeg</h3></td>
-                <td class="text-right"><h4> </h4><h4> Ft</h4></td>
-              </tr>
-              <tr>
-                <td><h3>Szállítás</h3></td>
-                <td class="text-right"><h4> Ft</h4></td>
-              </tr>
-              <tr>
-                <td><h3>Összesen</h3></td>
-                <td class="text-right"><h4> Ft</h4></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="row">
-            <div class="col-md-12 payment-bt">
-              <div class="center">
-                <button class="bt_main">Fizetés</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div th:insert="home :: footer"></div>
-<!-- end footer -->
-<!-- js section -->
-<script src="assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="assets/js/slick.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<!-- menu js -->
-<script src="assets/js/menumaker.js"></script>
-<!-- wow animation -->
-<script src="assets/js/wow.js"></script>
-<!-- custom js -->
-<script src="assets/js/custom.js"></script>
-<script>
-$(document).ready(function(){
-    $(".form-check-input").on("change", function() {
-    if ($(".form-check-input").is(":checked")) {
-      $('.ship').fadeIn();
-    } else {
-      $('.ship').fadeOut();
-    }
-  });
-});
 
-</script>
-</body>
+		<div class="section padding_layout_1 checkout_section">
+			<div class="container">
+				<form class="row" action="/order" method="POST">
+					<div class="col-md-8">
+						<div class="checkout-form">
+							<h2>Számlázási adatok</h2>
+							<div class="form-row col-md-12">
+								<div class="form-group col-md-6">
+									<label>Vezetéknév</label>
+									<input type="text" name="firstName" class="form-control" placeholder="Vezetéknév" />
+								</div>
+								<div class="form-group col-md-6">
+									<label>Keresztnév</label>
+									<input type="text" name="lastName" class="form-control" placeholder="Keresztnév" />
+								</div>
+							</div>
+							<div class="form-group col-md-8">
+								<label for="inputAddress">Számlázási cím</label>
+								<input type="text" name="address" class="form-control" id="inputAddress" placeholder="4028 Debrecen, Kassai út 28." />
+							</div>
+
+							<h2>Szállítási adatok</h2>
+							<div class="form-row col-md-12">
+								<div class="form-group col-md-6">
+									<label>Vezetéknév</label>
+									<input type="text" name="ship_firstName" class="form-control" placeholder="Vezetéknév" />
+								</div>
+								<div class="form-group col-md-6">
+									<label>Keresztnév</label>
+									<input type="text" name="ship_lastName" class="form-control" placeholder="Keresztnév" />
+								</div>
+							</div>
+							<div class="form-group col-md-8">
+								<label for="inputAddress">Szállítási cím</label>
+								<input type="text" name="ship_address" class="form-control" id="inputAddress" placeholder="4028 Debrecen, Kassai út 28." />
+							</div>
+
+							<h2>Értesítési adatok</h2>
+							<div class="form-group col-md-8">
+								<label>E-mail cím</label>
+								<input type="email" name="email" class="form-control" id="inputEmail4" placeholder="valami@example.com" />
+							</div>
+							<div class="form-group col-md-6">
+								<label>Telefonszám</label>
+								<input type="text" name="phone" class="form-control" id="inputAddress" placeholder="+36 30 123 4567" />
+							</div>
+							<div class="form-group col-md-8">
+								<label>Fizetési mód</label>
+								<div class="btn-group-toggle" data-toggle="buttons">
+									<label class="btn btn-primary-outline"><input type="radio" autocomplete="off" /><img src="/assets/images/mc.png" width="70" alt="Bankkártya" /></label>
+									<label class="btn btn-primary-outline"><input type="radio" autocomplete="off" /><img src="/assets/images/pp.png" width="70" alt="PayPal" /></label>
+									<label class="btn btn-primary-outline"><input type="radio" autocomplete="off" /><img src="/assets/images/uv.png" width="70" alt="Utánvét" /></label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="shopping-cart-cart">
+							<table>
+								<tbody>
+									<tr class="head-table">
+										<td><h5>Kosár</h5></td>
+										<td class="text-right"></td>
+									</tr>
+									<tr>
+										<td><h3>Részösszeg</h3></td>
+										<td class="text-right">
+											<h4><span th:text="${cartPrice}"></span> Ft</h4>
+										</td>
+									</tr>
+									<tr>
+										<td><h3>Szállítás</h3></td>
+										<td class="text-right"><h4>890 Ft</h4></td>
+									</tr>
+									<tr>
+										<td><h3>Összesen</h3></td>
+										<td class="text-right"><h4><span th:text="${cartPrice + 890}"></span> Ft</h4></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="row">
+								<div class="col-md-12 payment-bt">
+									<div class="center">
+										<button type="submit" class="bt_main">Fizetés</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div th:insert="home :: footer"></div>
+	</body>
 </html>

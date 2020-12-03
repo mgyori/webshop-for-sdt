@@ -1,5 +1,6 @@
 package hu.csapatnev.webshop;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,5 +48,9 @@ public class Utils {
 		if (items == null)
 			items = new ArrayList<CartItem>();
 		return items;
+	}
+	
+	public static String toUTF8(String in) {
+		return new String(in.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
 	}
 }

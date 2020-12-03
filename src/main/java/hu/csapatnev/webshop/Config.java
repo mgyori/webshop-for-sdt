@@ -1,6 +1,7 @@
 package hu.csapatnev.webshop;
 
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -84,7 +86,7 @@ public class Config implements WebMvcConfigurer {
 		dataSource.setPassword(prop.getProperty("db.pass"));
 		dataSource.setUrl("jdbc:mysql://" + prop.getProperty("db.host") + ":" + prop.getProperty("db.port") + "/"
 				+ prop.getProperty("db.base")
-				+ "?createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+				+ "?createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&connectionCollation=utf8_general_ci&characterSetResults=utf8");
 		return dataSource;
 	}
 	
@@ -174,6 +176,11 @@ public class Config implements WebMvcConfigurer {
 		r.setDefaultErrorView("error");
 		r.setExceptionAttribute("ex");
 		return r;
+	}
+	
+	@Bean
+	public StringHttpMessageConverter stringHttpMessageConverter() {
+	    return new StringHttpMessageConverter(Charset.forName("UTF-8"));
 	}
 	
 	public static Config getInstance() {
