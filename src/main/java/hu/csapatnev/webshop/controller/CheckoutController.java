@@ -58,9 +58,9 @@ public class CheckoutController {
 					itemSb.append("</table>");
 					
 					StringBuilder sb = new StringBuilder();
-					sb.append("<b>Rendelő adatai:</b><br>");
-					sb.append("Rendelő email címe: " + det.getEmail() + "<br>");
-					sb.append("Rendelő telefon száma: " + det.getPhone() + "<br>");
+					sb.append("<b>Rendelö adatai:</b><br>");
+					sb.append("Rendelö email címe: " + det.getEmail() + "<br>");
+					sb.append("Rendelö telefon száma: " + det.getPhone() + "<br>");
 					sb.append("<br>");
 					sb.append("<b>Szállítási adatok:</b><br>");
 					sb.append(det.getShip_firstName() + " " + det.getShip_lastName() + "<br>");
@@ -74,19 +74,16 @@ public class CheckoutController {
 					sb.append(itemSb);
 					
 					SendMail.sendTemplate("018Mark018@gmail.com", "Új rendelés " + det.getId(), "order", sb.toString(), "Új rendelés érkezett", "Ne válaszolj, köszi!", "");
-					System.out.println("Level elkuldve");
-					System.out.println(sb.toString());
+					SendMail.sendTemplate(det.getEmail(), "Új rendelés " + det.getId(), "order", sb.toString(), "Új rendelés érkezett", "Ne válaszolj, köszi!", "");
 					
-					
-					//request.getSession().setAttribute("cart", null);
+					request.getSession().setAttribute("cart", null);
 					
 					try {
 						Order ord = PaypalOrder.processOrder(token);
 						if (ord != null) {
 							if (ord.status().equalsIgnoreCase("completed")) {
 								model.addAttribute("state", true);
-								//orders.setPaid(det, true);
-								System.out.println("megy ez");
+								orders.setPaid(det, true);
 							} else {
 								model.addAttribute("state", false);
 								System.out.println("Nem sikerult a sizetes");
@@ -124,21 +121,23 @@ public class CheckoutController {
 		for (CartItem c : cart)
 			price += c.getCount() * c.getItem().getPrice();
 		
-		Order order = PaypalOrder.newOrder(price);
+		Order order = PaypalOrder.newOrder(price + 890);
 		
-		details.setFirstName(Utils.toUTF8(request.getParameter("firstName")));
-		details.setLastName(Utils.toUTF8(request.getParameter("lastName")));
-		details.setAddress(request.getParameter("address"));
+		details.setFirstName(Utils.urlDecode(request.getParameter("firstName")));
+		details.setLastName(Utils.urlDecode(request.getParameter("lastName")));
+		details.setAddress(Utils.urlDecode(request.getParameter("address")));
 		
-		details.setShip_firstName(request.getParameter("ship_firstName"));
-		details.setShip_lastName(request.getParameter("ship_lastName"));
-		details.setShip_address(request.getParameter("ship_address"));
+		details.setShip_firstName(Utils.urlDecode(request.getParameter("ship_firstName")));
+		details.setShip_lastName(Utils.urlDecode(request.getParameter("ship_lastName")));
+		details.setShip_address(Utils.urlDecode(request.getParameter("ship_address")));
 		
-		details.setPhone(request.getParameter("phone"));
-		details.setEmail(request.getParameter("email"));
+		details.setPhone(Utils.urlDecode(request.getParameter("phone")));
+		details.setEmail(Utils.urlDecode(request.getParameter("email")));
 		
 		details.setItems(cart);
 		details.setPaymentID(order.id());
+		
+		details.setPaymentMethod(Integer.parseInt(request.getParameter("paymentMethod")));
 		
 		orders.create(details);
 		return new RedirectView(order.links().get(1).href());

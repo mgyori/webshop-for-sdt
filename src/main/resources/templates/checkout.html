@@ -28,7 +28,7 @@
 
 		<div class="section padding_layout_1 checkout_section">
 			<div class="container">
-				<form class="row" action="/order" method="POST">
+				<form class="row orderForm" action="/order" method="POST">
 					<div class="col-md-8">
 						<div class="checkout-form">
 							<h2>Számlázási adatok</h2>
@@ -75,9 +75,9 @@
 							<div class="form-group col-md-8">
 								<label>Fizetési mód</label>
 								<div class="btn-group-toggle" data-toggle="buttons">
-									<label class="btn btn-primary-outline"><input type="radio" autocomplete="off" /><img src="/assets/images/mc.png" width="70" alt="Bankkártya" /></label>
-									<label class="btn btn-primary-outline"><input type="radio" autocomplete="off" /><img src="/assets/images/pp.png" width="70" alt="PayPal" /></label>
-									<label class="btn btn-primary-outline"><input type="radio" autocomplete="off" /><img src="/assets/images/uv.png" width="70" alt="Utánvét" /></label>
+									<label class="btn btn-primary-outline"><input type="radio" name="paymentMethod" value="0" autocomplete="off" disabled /><img src="/assets/images/mc.png" width="70" alt="Bankkártya" /></label>
+									<label class="btn btn-primary-outline"><input type="radio" name="paymentMethod" value="1" autocomplete="off" checked="checked" /><img src="/assets/images/pp.png" width="70" alt="PayPal" /></label>
+									<label class="btn btn-primary-outline"><input type="radio" name="paymentMethod" value="2" autocomplete="off" disabled /><img src="/assets/images/uv.png" width="70" alt="Utánvét" /></label>
 								</div>
 							</div>
 						</div>

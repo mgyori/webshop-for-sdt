@@ -1,5 +1,6 @@
 package hu.csapatnev.webshop;
 
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,5 +53,13 @@ public class Utils {
 	
 	public static String toUTF8(String in) {
 		return new String(in.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+	}
+	
+	public static String toISO(String in) {
+		return new String(in.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
+	}
+	
+	public static String urlDecode(String str) {
+		return URLDecoder.decode(str, StandardCharsets.UTF_8);
 	}
 }

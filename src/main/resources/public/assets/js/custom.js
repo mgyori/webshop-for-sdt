@@ -139,3 +139,40 @@ if ($(".product_detail_feature_img").length > 0) {
 		$('.product_detail_feature_img').slick();
 	});
 }
+
+if ($(".orderForm").length > 0) {
+	$(".orderForm").submit(function(e) {
+		var firstName = $(this).find("[name=firstName]").val();
+		var lastName = $(this).find("[name=lastName]").val();
+		var address = $(this).find("[name=address]").val();
+		var ship_firstName = $(this).find("[name=ship_firstName]").val();
+		var ship_lastName = $(this).find("[name=ship_lastName]").val();
+		var ship_address = $(this).find("[name=ship_address]").val();
+		var phone = $(this).find("[name=phone]").val();
+		var email = $(this).find("[name=email]").val();
+
+		var errors = [];
+		if (firstName.length == 0)
+			errors.push("A számlázási vezetékneved nem lehet üres!");
+		if (lastName.length == 0)
+			errors.push("A számlázási keresztneved nem lehet üres!");
+		if (address.length == 0)
+			errors.push("A számlázási címed nem lehet üres!");
+		if (ship_firstName.length == 0)
+			errors.push("A szállítási vezetékneved nem lehet üres!");
+		if (ship_lastName.length == 0)
+			errors.push("A szállítási keresztneved nem lehet üres!");
+		if (ship_address.length == 0)
+			errors.push("A szállítási címed nem lehet üres!");
+		if (phone.length == 0)
+			errors.push("A telefon számod nem lehet üres!");
+		if (email.length == 0)
+			errors.push("Az email címed nem lehet üres!");
+			
+		if (errors.length > 0) {
+			alert(errors.join("\n"));
+			e.preventDefault();
+			return false;
+		}
+	});
+}
