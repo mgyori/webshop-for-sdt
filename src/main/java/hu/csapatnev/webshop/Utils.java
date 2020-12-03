@@ -1,11 +1,15 @@
 package hu.csapatnev.webshop;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.data.domain.Page;
+
+import hu.csapatnev.webshop.session.CartItem;
 
 public class Utils {
 	public static UrlParser parseUrlFromRequest(HttpServletRequest request) {
@@ -37,5 +41,25 @@ public class Utils {
 			pagination.add(i + start + 1);
 	
 		return pagination;
+	}
+	
+	public static List<CartItem> getCartItems(HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<CartItem> items = (List<CartItem>) request.getSession().getAttribute("cart");
+		if (items == null)
+			items = new ArrayList<CartItem>();
+		return items;
+	}
+	
+	public static String toUTF8(String in) {
+		return new String(in.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+	}
+	
+	public static String toISO(String in) {
+		return new String(in.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);
+	}
+	
+	public static String urlDecode(String str) {
+		return URLDecoder.decode(str, StandardCharsets.UTF_8);
 	}
 }

@@ -28,17 +28,28 @@
 
 		<div class="section padding_layout_1 product_detail">
 			<div class="container">
+				<div class="row" th:if="${addedToCart}">
+					<div class="col-sm-12">
+						<div class="alert alert-success">
+							Sikeresen hozzáadtál <span th:text="${addedToCart}"></span> darabot a kosaradba!
+						</div>
+					</div>
+				</div>
+				<div class="row" th:if="${addedMoreToCart}">
+					<div class="col-sm-12">
+						<div class="alert alert-success">
+							Sikeresen hozzáadtál még <span th:text="${addedMoreToCart}"></span> darabot a kosaradba!
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-xl-6 col-lg-12 col-md-12">
-								<div class="product_detail_feature_img hizoom hi2">
-									<div class="product_img">
-										<img class="img-responsive" th:src="@{'/assets/images/items/' + ${itemImage} + '.jpg'}" alt=""/>
-									</div>
+								<div class="product_detail_feature_img hizoom hi2" th:data-id="${itemId}">
 								</div>
 							</div>
-							<div class="col-xl-6 col-lg-12 col-md-12 product_detail_side detail_style1">
+							<div class="col-offset-xl-1 col-xl-5 col-lg-12 col-md-12 product_detail_side detail_style1">
 								<div class="product-heading">
 									<h2 th:text="${itemName}"></h2>
 								</div>
@@ -51,11 +62,11 @@
 										<br>
 										<span class="stock"><span th:text="${itemStock}"></span> darab raktáron</span>
 									</p>
-									<form class="cart" method="post" action="it_cart.html">
+									<form id="addToCard" class="cart" method="post">
 										<div class="quantity">
-										<input step="1" min="1" max="5" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" type="number">
+											<input step="1" min="1" th:max=${itemStock} name="count" value="1" title="Qty" class="input-text qty text" size="4" type="number">
 										</div>
-										<button type="submit" class="btn sqaure_bt">Kosárba rakás</button>
+										<button type="submit" class="btn sqaure_bt" th:attr="data-id=${itemId}">Kosárba rakás</button>
 									</form>
 								</div>
 								<div class="share-post">
